@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_grid_2"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "Campus"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Main Learning Campus"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "125 Cedar Avenue, Suite 300, Learning District"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_meta"}, "text": "Weekdays 13:00 to 22:00"}
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "Contact"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Start with a direct academy conversation"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Phone: 010-1234-5678\nEmail: hello@academycore.edu\nAdmission Desk: Room 301"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_meta"}, "text": "Use the consultation route for intake details"}
+      ]
+    }
+  ]
+}

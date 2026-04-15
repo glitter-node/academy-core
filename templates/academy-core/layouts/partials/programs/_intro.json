@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_section"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_section_header"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_label"
+          },
+          "text": "Programs"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_title"
+          },
+          "text": "Structured pathways for foundation, acceleration, and advanced preparation."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_copy"
+          },
+          "text": "These program summaries give the academy a clean public overview page without introducing backend dependencies. Each card can later be connected to curriculum or admissions systems if needed."
+        }
+      ]
+    }
+  ]
+}

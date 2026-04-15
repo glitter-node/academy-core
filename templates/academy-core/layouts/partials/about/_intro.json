@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_section"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_section_header"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_label"
+          },
+          "text": "About"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_title"
+          },
+          "text": "An academy template shaped for clear guidance and steady trust."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_copy"
+          },
+          "text": "Academy Core organizes the main academy journey into stable routes, readable sections, and a calm visual system that supports family communication, enrollment discovery, and academic credibility."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_card ac_table_card"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Table",
+      "props": {
+        "className": "ac_table"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Thead",
+          "children": [
+            {
+              "type": "basic",
+              "name": "Tr",
+              "children": [
+                {"type": "basic", "name": "Th", "text": "Time"},
+                {"type": "basic", "name": "Th", "text": "Monday"},
+                {"type": "basic", "name": "Th", "text": "Wednesday"},
+                {"type": "basic", "name": "Th", "text": "Friday"}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Tbody",
+          "children": [
+            {
+              "type": "basic",
+              "name": "Tr",
+              "children": [
+                {"type": "basic", "name": "Td", "text": "16:00"},
+                {"type": "basic", "name": "Td", "text": "Core Skills Math"},
+                {"type": "basic", "name": "Td", "text": "Core Skills English"},
+                {"type": "basic", "name": "Td", "text": "Study Clinic"}
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Tr",
+              "children": [
+                {"type": "basic", "name": "Td", "text": "18:00"},
+                {"type": "basic", "name": "Td", "text": "Acceleration Math"},
+                {"type": "basic", "name": "Td", "text": "Acceleration Science"},
+                {"type": "basic", "name": "Td", "text": "Writing Workshop"}
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Tr",
+              "children": [
+                {"type": "basic", "name": "Td", "text": "20:00"},
+                {"type": "basic", "name": "Td", "text": "Scholars Seminar"},
+                {"type": "basic", "name": "Td", "text": "Project Lab"},
+                {"type": "basic", "name": "Td", "text": "Mentoring Review"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

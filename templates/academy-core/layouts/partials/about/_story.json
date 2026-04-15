@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_grid_2"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_kicker"
+          },
+          "text": "Vision"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Guide each student with a visible learning path."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "The template highlights program depth, instructor credibility, schedule clarity, and consultation access so visitors can understand how the academy supports progress from first inquiry to long term study planning."
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_kicker"
+          },
+          "text": "Method"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Use repeatable sections with separated assets."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "Each page is assembled from focused partial layouts, while the visual layer lives in external CSS and runtime components stay in the existing JS bundle. This keeps the template self contained and easy to revise."
+        }
+      ]
+    }
+  ]
+}

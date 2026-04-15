@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "layout_name": "403",
+  "extends": "_user_base",
+  "meta": {
+    "title": "Forbidden"
+  },
+  "slots": {
+    "content": [
+      {
+        "partial": "partials/common/_error_403.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "layout_name": "notices",
+  "extends": "_user_base",
+  "meta": {
+    "title": "Notices",
+    "description": "Academy notices and updates"
+  },
+  "slots": {
+    "content": [
+      {
+        "id": "notices_stack",
+        "type": "basic",
+        "name": "Div",
+        "props": {"className": "ac_page_stack"},
+        "children": [
+          {"partial": "partials/notices/_intro.json"},
+          {"partial": "partials/notices/_list.json"}
+        ]
+      }
+    ]
+  }
+}

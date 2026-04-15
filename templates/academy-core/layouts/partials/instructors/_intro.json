@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_section"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_section_header"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_label"
+          },
+          "text": "Instructors"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_title"
+          },
+          "text": "Show teaching strengths through concise faculty profiles."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_copy"
+          },
+          "text": "This page introduces subject leads and mentoring styles in a format that is easy for families to scan during the first visit."
+        }
+      ]
+    }
+  ]
+}

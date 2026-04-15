@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "layout_name": "home",
+  "extends": "_user_base",
+  "meta": {
+    "title": "Academy Core Home",
+    "description": "Academy focused user homepage"
+  },
+  "slots": {
+    "content": [
+      {
+        "id": "home_stack",
+        "type": "basic",
+        "name": "Div",
+        "props": {"className": "ac_page_stack"},
+        "children": [
+          {"partial": "partials/home/_hero.json"},
+          {"partial": "partials/home/_metrics.json"},
+          {"partial": "partials/home/_featured_programs.json"},
+          {"partial": "partials/home/_latest_notices.json"},
+          {"partial": "partials/common/_cta.json"}
+        ]
+      }
+    ]
+  }
+}

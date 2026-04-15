@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "layout_name": "faq",
+  "extends": "_user_base",
+  "meta": {
+    "title": "FAQ",
+    "description": "Frequently asked academy questions"
+  },
+  "slots": {
+    "content": [
+      {
+        "id": "faq_stack",
+        "type": "basic",
+        "name": "Div",
+        "props": {"className": "ac_page_stack"},
+        "children": [
+          {"partial": "partials/faq/_list.json"},
+          {"partial": "partials/common/_cta.json"}
+        ]
+      }
+    ]
+  }
+}

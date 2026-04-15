@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "layout_name": "timetable",
+  "extends": "_user_base",
+  "meta": {
+    "title": "Timetable",
+    "description": "Weekly academy timetable"
+  },
+  "slots": {
+    "content": [
+      {
+        "id": "timetable_stack",
+        "type": "basic",
+        "name": "Div",
+        "props": {"className": "ac_page_stack"},
+        "children": [
+          {"partial": "partials/timetable/_intro.json"},
+          {"partial": "partials/timetable/_table.json"},
+          {"partial": "partials/common/_cta.json"}
+        ]
+      }
+    ]
+  }
+}

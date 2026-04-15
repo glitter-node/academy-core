@@ -1,0 +1,19 @@
+{
+  "meta": {"is_partial": true},
+  "type": "basic",
+  "name": "Div",
+  "props": {"className": "ac_band"},
+  "children": [
+    {"type": "basic", "name": "Div", "props": {"className": "ac_band_title"}, "text": "Plan a practical academic route with an advisor and teaching team."},
+    {"type": "basic", "name": "Div", "props": {"className": "ac_band_copy"}, "text": "Share grade level, target subjects, preferred timetable, and learning goals to receive a guided consultation response."},
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_actions"},
+      "children": [
+        {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button"}, "text": "Request Consultation", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/consultation"}}]},
+        {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button_secondary"}, "text": "View Contact", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/contact"}}]}
+      ]
+    }
+  ]
+}

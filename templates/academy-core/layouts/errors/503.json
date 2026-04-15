@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "layout_name": "503",
+  "extends": "_user_base",
+  "meta": {
+    "title": "Service Unavailable"
+  },
+  "slots": {
+    "content": [
+      {
+        "partial": "partials/common/_error_503.json"
+      }
+    ]
+  }
+}

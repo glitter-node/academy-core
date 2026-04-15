@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "layout_name": "about",
+  "extends": "_user_base",
+  "meta": {
+    "title": "About Academy Core",
+    "description": "Academy vision and learning method"
+  },
+  "slots": {
+    "content": [
+      {
+        "id": "about_stack",
+        "type": "basic",
+        "name": "Div",
+        "props": {"className": "ac_page_stack"},
+        "children": [
+          {"partial": "partials/about/_intro.json"},
+          {"partial": "partials/about/_story.json"},
+          {"partial": "partials/common/_cta.json"}
+        ]
+      }
+    ]
+  }
+}

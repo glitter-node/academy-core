@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_section"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_section_header"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_label"
+          },
+          "text": "Notices"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_title"
+          },
+          "text": "Use a simple announcement route for academy updates and reminders."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_copy"
+          },
+          "text": "The notice list is static by design so the page stays reliable even before board or news integrations are introduced."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "layout_name": "_user_base",
+  "meta": {
+    "title": "Academy Core",
+    "description": "Academy focused user template",
+    "is_base": true
+  },
+  "components": [
+    {
+      "id": "ac_shell",
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_shell"
+      },
+      "children": [
+        {
+          "partial": "partials/common/_site_header.json"
+        },
+        {
+          "id": "ac_main",
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_main"
+          },
+          "children": [
+            {
+              "id": "ac_main_wrap",
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_wrap"
+              },
+              "children": [
+                {
+                  "id": "ac_main_slot",
+                  "type": "basic",
+                  "name": "Div",
+                  "slot": "content",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "partial": "partials/common/_site_footer.json"
+        }
+      ]
+    }
+  ]
+}

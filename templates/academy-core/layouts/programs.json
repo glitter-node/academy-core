@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "layout_name": "programs",
+  "extends": "_user_base",
+  "meta": {
+    "title": "Programs",
+    "description": "Academy program overview"
+  },
+  "slots": {
+    "content": [
+      {
+        "id": "programs_stack",
+        "type": "basic",
+        "name": "Div",
+        "props": {"className": "ac_page_stack"},
+        "children": [
+          {"partial": "partials/programs/_intro.json"},
+          {"partial": "partials/programs/_list.json"},
+          {"partial": "partials/common/_cta.json"}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "meta": {"is_partial": true},
+  "type": "basic",
+  "name": "Div",
+  "props": {"className": "ac_hero"},
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_hero_inner"},
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "children": [
+            {"type": "basic", "name": "Div", "props": {"className": "ac_kicker"}, "text": "Academy Website Template"},
+            {"type": "basic", "name": "Div", "props": {"className": "ac_title"}, "text": "Guide academic growth with clear programs, trusted instructors, and structured timetables."},
+            {"type": "basic", "name": "Div", "props": {"className": "ac_copy"}, "text": "Academy Core v1 is organized for education websites that need stable navigation, concise program presentation, notice delivery, and direct consultation entry points."},
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_actions"},
+              "children": [
+                {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button"}, "text": "Browse Programs", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/programs"}}]},
+                {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button_secondary"}, "text": "Meet Instructors", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/instructors"}}]}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {"className": "ac_panel"},
+          "children": [
+            {"type": "basic", "name": "Div", "props": {"className": "ac_panel_label"}, "text": "Campus Focus"},
+            {"type": "basic", "name": "Div", "props": {"className": "ac_panel_value"}, "text": "Spring 2026"},
+            {"type": "basic", "name": "Div", "text": "Programs, mentoring rhythm, and a consultation-first flow are aligned to make academy discovery simple for families."}
+          ]
+        }
+      ]
+    }
+  ]
+}

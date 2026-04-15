@@ -1,0 +1,11 @@
+{
+  "meta": {"is_partial": true},
+  "type": "basic",
+  "name": "Div",
+  "props": {"className": "ac_metrics"},
+  "children": [
+    {"type": "basic", "name": "Div", "props": {"className": "ac_metric_card"}, "children": [{"type": "basic", "name": "Div", "props": {"className": "ac_metric_value"}, "text": "18"}, {"type": "basic", "name": "Div", "props": {"className": "ac_metric_label"}, "text": "Guided class blocks each week"}]},
+    {"type": "basic", "name": "Div", "props": {"className": "ac_metric_card"}, "children": [{"type": "basic", "name": "Div", "props": {"className": "ac_metric_value"}, "text": "6"}, {"type": "basic", "name": "Div", "props": {"className": "ac_metric_label"}, "text": "Lead instructors in the sample roster"}]},
+    {"type": "basic", "name": "Div", "props": {"className": "ac_metric_card"}, "children": [{"type": "basic", "name": "Div", "props": {"className": "ac_metric_value"}, "text": "4"}, {"type": "basic", "name": "Div", "props": {"className": "ac_metric_label"}, "text": "Student pathway stages"}]}
+  ]
+}

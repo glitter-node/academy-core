@@ -1,0 +1,27 @@
+{
+  "meta": {"is_partial": true},
+  "type": "basic",
+  "name": "Div",
+  "props": {"className": "ac_section"},
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_section_header"},
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_section_label"}, "text": "Latest Notices"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_section_title"}, "text": "Use a small notice block on the home page for time-sensitive updates."},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_section_copy"}, "text": "This keeps the landing page academy-oriented while still surfacing new admissions updates, timetable changes, and parent briefings."}
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_grid_2"},
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card"}, "children": [{"type": "basic", "name": "Span", "props": {"className": "ac_badge"}, "text": "Admissions"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Consultation intake remains open for new students."}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Families can request subject planning and initial level review through the consultation form."}]},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card"}, "children": [{"type": "basic", "name": "Span", "props": {"className": "ac_badge"}, "text": "Campus"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Weekly timetable updates are posted every Friday."}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Parents can review sample class blocks and schedule guidance on the timetable page."}]}
+      ]
+    }
+  ]
+}

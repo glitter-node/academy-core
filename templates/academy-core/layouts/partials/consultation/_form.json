@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_form_card"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Form",
+      "props": {
+        "className": "ac_form_grid"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field"
+          },
+          "children": [
+            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Student Name"},
+            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the student name"}}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field"
+          },
+          "children": [
+            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Guardian Contact"},
+            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter a phone number or email"}}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field"
+          },
+          "children": [
+            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Current Grade"},
+            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the current grade"}}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field"
+          },
+          "children": [
+            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Preferred Start"},
+            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the preferred start month"}}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field"
+          },
+          "children": [
+            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Primary Subject"},
+            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the main subject focus"}}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field"
+          },
+          "children": [
+            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Preferred Campus Visit"},
+            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the preferred visit date"}}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field ac_field_full"
+          },
+          "children": [
+            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Learning Goals"},
+            {"type": "basic", "name": "Textarea", "props": {"className": "ac_textarea", "placeholder": "Share the learning goals, current challenges, and support needed."}}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_field ac_field_full"
+          },
+          "children": [
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button"}, "text": "Consultation Preview"}
+          ]
+        }
+      ]
+    }
+  ]
+}

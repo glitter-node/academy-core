@@ -1,0 +1,37 @@
+/*
+!/templates/
+templates/*
+!templates/academy-core/
+!.gitignore
+!README.md
+
+# ===== 기본 제외 =====
+*.log
+.DS_Store
+
+# ===== 환경 =====
+.env
+.env.*
+
+# ===== 에디터 =====
+.idea
+.vscode
+
+# ===== 의존성 =====
+node_modules/
+
+# ===== 보안 =====
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+credentials.json
+service-account.json
+id_rsa
+id_ed25519
+
+# ===== DB =====
+*.sql
+*.sqlite
+*.db

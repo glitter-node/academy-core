@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_grid_3"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_kicker"
+          },
+          "text": "Foundation"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Core Skills Program"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "Build strong study routines, concept accuracy, and weekly review habits for students who need stable academic momentum."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_meta"
+          },
+          "text": "Four sessions each week"
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_kicker"
+          },
+          "text": "Growth"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Acceleration Track"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "Add benchmark reviews, coaching sessions, and subject strategy meetings for students who are ready to advance faster."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_meta"
+          },
+          "text": "Six sessions each week"
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_kicker"
+          },
+          "text": "Advanced"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Scholars Studio"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "Support high achieving students with seminar style instruction, long range planning, and deeper project based study."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_meta"
+          },
+          "text": "Eight sessions each week"
+        }
+      ]
+    }
+  ]
+}

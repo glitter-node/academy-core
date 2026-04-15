@@ -1,0 +1,28 @@
+{
+  "meta": {"is_partial": true},
+  "type": "basic",
+  "name": "Div",
+  "props": {"className": "ac_section"},
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_section_header"},
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_section_label"}, "text": "Featured Programs"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_section_title"}, "text": "Program architecture that moves from foundations to advanced coaching."},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_section_copy"}, "text": "The home page highlights the main learning tracks first, then sends visitors into instructors, timetable, notices, and consultation pages without mixing concerns."}
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_grid_3"},
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card"}, "children": [{"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "Foundation"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Starter Track"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Daily study discipline, concept review, and guided homework support for students building consistency."}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_meta"}, "text": "Best for first stage learners"}]},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card"}, "children": [{"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "Progression"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Intensive Track"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Longer weekly blocks, checkpoint testing, and subject-based acceleration for measurable improvement."}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_meta"}, "text": "Best for growth stage learners"}]},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card"}, "children": [{"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "Advisory"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Exam Strategy Track"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Subject sequencing, mock review, and timetable adjustments designed around exam windows and target schools."}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_meta"}, "text": "Best for advanced preparation"}]}
+      ]
+    }
+  ]
+}

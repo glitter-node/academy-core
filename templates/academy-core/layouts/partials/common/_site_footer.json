@@ -1,0 +1,34 @@
+{
+  "meta": {"is_partial": true},
+  "type": "basic",
+  "name": "Div",
+  "props": {"className": "ac_footer"},
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_wrap ac_footer_inner"},
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "children": [
+            {"type": "basic", "name": "Div", "text": "Academy Core presents programs, instructors, schedules, and consultation pathways in one structured template."},
+            {"type": "basic", "name": "Div", "props": {"className": "ac_footer_note"}, "text": "Campus hours: Mon to Sat, 08:30 to 22:00"}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {"className": "ac_footer_links"},
+          "children": [
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_footer_link"}, "text": "Programs", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/programs"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_footer_link"}, "text": "Timetable", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/timetable"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_footer_link"}, "text": "FAQ", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/faq"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_footer_link"}, "text": "Contact", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/contact"}}]}
+          ]
+        }
+      ]
+    }
+  ]
+}

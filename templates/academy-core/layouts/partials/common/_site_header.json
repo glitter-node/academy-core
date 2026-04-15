@@ -1,0 +1,40 @@
+{
+  "meta": {"is_partial": true},
+  "type": "basic",
+  "name": "Div",
+  "props": {"className": "ac_header"},
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {"className": "ac_wrap ac_header_inner"},
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {"className": "ac_brand"},
+          "children": [
+            {"type": "basic", "name": "Div", "props": {"className": "ac_brand_mark"}, "text": "Academy Core"},
+            {"type": "basic", "name": "Div", "props": {"className": "ac_brand_name"}, "text": "Future Learning Campus"}
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {"className": "ac_nav"},
+          "children": [
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Home", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "About", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/about"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Programs", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/programs"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Instructors", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/instructors"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Timetable", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/timetable"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "FAQ", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/faq"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Notices", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/notices"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Contact", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/contact"}}]},
+            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button"}, "text": "Consultation", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/consultation"}}]}
+          ]
+        }
+      ]
+    }
+  ]
+}

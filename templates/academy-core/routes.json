@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "description": "Academy Core user template routes",
+  "routes": [
+    {"path": "/", "layout": "home", "auth_required": false, "meta": {"title": "Academy Core Home"}},
+    {"path": "/about", "layout": "about", "auth_required": false, "meta": {"title": "About Academy Core"}},
+    {"path": "/programs", "layout": "programs", "auth_required": false, "meta": {"title": "Programs"}},
+    {"path": "/instructors", "layout": "instructors", "auth_required": false, "meta": {"title": "Instructors"}},
+    {"path": "/timetable", "layout": "timetable", "auth_required": false, "meta": {"title": "Timetable"}},
+    {"path": "/notices", "layout": "notices", "auth_required": false, "meta": {"title": "Notices"}},
+    {"path": "/faq", "layout": "faq", "auth_required": false, "meta": {"title": "FAQ"}},
+    {"path": "/consultation", "layout": "consultation", "auth_required": false, "meta": {"title": "Consultation"}},
+    {"path": "/contact", "layout": "contact", "auth_required": false, "meta": {"title": "Contact"}}
+  ]
+}

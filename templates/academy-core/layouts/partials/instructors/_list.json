@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_grid_3"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_badge"
+          },
+          "text": "Mathematics"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Daniel Carter"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "Focuses on problem solving structure, error review habits, and steady confidence building for middle and upper grade students."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_meta"
+          },
+          "text": "Lead instructor for acceleration cohorts"
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_badge"
+          },
+          "text": "English"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Sophia Bennett"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "Builds reading depth, writing clarity, and discussion fluency through text analysis and feedback centered workshops."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_meta"
+          },
+          "text": "Guides writing intensive programs"
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_badge"
+          },
+          "text": "Science"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_title"
+          },
+          "text": "Ethan Moore"
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_copy"
+          },
+          "text": "Connects concept mastery with experiments, visual explanation, and progress mapping for exam and project readiness."
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_card_meta"
+          },
+          "text": "Coordinates scholars project seminars"
+        }
+      ]
+    }
+  ]
+}

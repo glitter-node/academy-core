@@ -1,0 +1,24 @@
+{
+  "templateId": "academy-core",
+  "version": "1.0.0",
+  "components": {
+    "basic": [
+      {"name": "Button", "type": "basic"},
+      {"name": "Div", "type": "basic"},
+      {"name": "Form", "type": "basic"},
+      {"name": "Input", "type": "basic"},
+      {"name": "Label", "type": "basic"},
+      {"name": "Textarea", "type": "basic"},
+      {"name": "P", "type": "basic"},
+      {"name": "Span", "type": "basic"},
+      {"name": "Table", "type": "basic"},
+      {"name": "Thead", "type": "basic"},
+      {"name": "Tbody", "type": "basic"},
+      {"name": "Tr", "type": "basic"},
+      {"name": "Th", "type": "basic"},
+      {"name": "Td", "type": "basic"}
+    ],
+    "composite": [],
+    "layout": []
+  }
+}

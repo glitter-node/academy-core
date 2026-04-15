@@ -1,0 +1,48 @@
+{
+  "identifier": "academy-core",
+  "vendor": "academy",
+  "name": {
+    "ko": "Academy Core",
+    "en": "Academy Core"
+  },
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": {
+    "ko": "Academy focused user template for GnuBoard7",
+    "en": "Academy focused user template for GnuBoard7"
+  },
+  "type": "user",
+  "locales": ["ko", "en"],
+  "author": {
+    "name": "OpenAI",
+    "email": "support@openai.com",
+    "url": "https://openai.com"
+  },
+  "release_date": "2026-04-15",
+  "g7_version": ">=7.0.0-beta.1",
+  "dependencies": {
+    "modules": {},
+    "plugins": {}
+  },
+  "assets": {
+    "css": ["dist/css/components.css"],
+    "js": ["dist/js/components.iife.js"],
+    "fonts": [],
+    "images": []
+  },
+  "error_config": {
+    "layouts": {
+      "401": "401",
+      "403": "403",
+      "404": "404",
+      "500": "500",
+      "503": "503",
+      "maintenance": "maintenance"
+    }
+  },
+  "features": {
+    "dark_mode": false,
+    "responsive": true,
+    "multi_language": true
+  }
+}

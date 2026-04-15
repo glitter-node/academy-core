@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_notice_stack"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "FAQ 01"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "How do families choose the right program?"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "The consultation page collects the student grade, goals, and preferred start date so the academy can recommend a suitable program path."}
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "FAQ 02"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Can the timetable be updated for seasonal terms?"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Yes. The timetable layout is a self contained template page, so the academy can revise class blocks without touching backend business logic."}
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "props": {
+        "className": "ac_card"
+      },
+      "children": [
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "FAQ 03"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Does this template require extra plugins or modules?"},
+        {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "No. The current version is a standalone user template that stays compatible with installation and activation using the existing template manager."}
+      ]
+    }
+  ]
+}
