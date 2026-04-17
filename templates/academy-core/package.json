@@ -1,0 +1,38 @@
+{
+  "name": "academy-core",
+  "version": "1.0.0",
+  "description": "Academy-oriented user template bundle for Gnuboard7",
+  "private": true,
+  "type": "module",
+  "main": "dist/js/components.iife.js",
+  "files": [
+    "dist",
+    "components.json",
+    "routes.json",
+    "template.json",
+    "seo-config.json"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch"
+  },
+  "keywords": [
+    "g7",
+    "template",
+    "academy",
+    "user"
+  ],
+  "author": "OpenAI",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "react": "^19.2.5"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "base": {
+    "layout_title": "Academy Core",
+    "layout_description": "Academy focused user experience"
+  },
+  "theme": {
+    "auto": "Auto",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "routes": {
+    "home": "Academy Core Home",
+    "about": "About Academy Core",
+    "programs": "Programs",
+    "instructors": "Instructors",
+    "timetable": "Timetable",
+    "notices": "Notices",
+    "faq": "FAQ",
+    "consultation": "Consultation",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Sign Up",
+    "mypage": "Account",
+    "profile": "Profile",
+    "change_password": "Change Password"
+  }
+}

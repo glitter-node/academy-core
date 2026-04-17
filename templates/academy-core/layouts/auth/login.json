@@ -1,0 +1,271 @@
+{
+  "version": "1.0.0",
+  "layout_name": "auth/login",
+  "extends": "auth/_auth_base",
+  "init_actions": [
+    {
+      "handler": "setState",
+      "params": {
+        "target": "local",
+        "isLoggingIn": false,
+        "loginError": null,
+        "loginErrors": null,
+        "form.email": "",
+        "form.password": ""
+      }
+    }
+  ],
+  "slots": {
+    "auth_body": [
+      {
+        "type": "basic",
+        "name": "Div",
+        "if": "{{query.registered}}",
+        "props": {
+          "className": "ac_form_message is_success"
+        },
+        "children": [
+          {
+            "type": "basic",
+            "name": "P",
+            "text": "Your account has been created successfully."
+          },
+          {
+            "type": "basic",
+            "name": "P",
+            "text": "You can now log in with your email and password."
+          }
+        ]
+      },
+      {
+        "type": "basic",
+        "name": "Div",
+        "if": "{{_local.loginError}}",
+        "props": {
+          "className": "ac_form_message is_error"
+        },
+        "children": [
+          {
+            "type": "basic",
+            "name": "P",
+            "text": "{{_local.loginError}}"
+          }
+        ]
+      },
+      {
+        "type": "basic",
+        "name": "P",
+        "props": {
+          "className": "ac_auth_help"
+        },
+        "text": "Use the email address linked to your academy account."
+      },
+      {
+        "type": "basic",
+        "name": "Form",
+        "dataKey": "form",
+        "props": {
+          "className": "ac_form_stack ac_form_stack_login"
+        },
+        "actions": [
+          {
+            "type": "submit",
+            "handler": "sequence",
+            "actions": [
+              {
+                "handler": "setState",
+                "params": {
+                  "target": "local",
+                  "isLoggingIn": true,
+                  "loginError": null,
+                  "loginErrors": null
+                }
+              },
+              {
+                "handler": "login",
+                "target": "user",
+                "params": {
+                  "body": {
+                    "email": "{{form.email}}",
+                    "password": "{{form.password}}"
+                  }
+                },
+                "onSuccess": [
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "global",
+                      "currentUser": "{{response.user}}",
+                      "isLoggingIn": false
+                    }
+                  },
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "local",
+                      "isLoggingIn": false,
+                      "loginError": null,
+                      "loginErrors": null
+                    }
+                  },
+                  {
+                    "handler": "toast",
+                    "params": {
+                      "type": "success",
+                      "message": "Signed in successfully."
+                    }
+                  },
+                  {
+                    "handler": "navigate",
+                    "params": {
+                      "path": "{{query.redirect ?? '/mypage/profile'}}"
+                    }
+                  }
+                ],
+                "onError": [
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "local",
+                      "isLoggingIn": false,
+                      "loginError": "{{error.errors?.email || error.errors?.password ? 'Enter a valid email and password.' : 'Invalid credentials.'}}",
+                      "loginErrors": "{{error.errors}}"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "children": [
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Label",
+                "text": "Email"
+              },
+              {
+                "type": "basic",
+                "name": "Input",
+                "props": {
+                  "type": "email",
+                  "name": "email",
+                  "placeholder": "you@example.com",
+                  "className": "ac_input",
+                  "required": true,
+                  "disabled": "{{_local.isLoggingIn}}"
+                }
+              },
+              {
+                "type": "basic",
+                "name": "P",
+                "if": "{{_local.loginErrors?.email}}",
+                "props": {
+                  "className": "ac_field_error"
+                },
+                "text": "Enter a valid email address."
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Label",
+                "text": "Password"
+              },
+              {
+                "type": "basic",
+                "name": "Input",
+                "props": {
+                  "type": "password",
+                  "name": "password",
+                  "placeholder": "Enter your password",
+                  "className": "ac_input",
+                  "required": true,
+                  "disabled": "{{_local.isLoggingIn}}"
+                }
+              },
+              {
+                "type": "basic",
+                "name": "P",
+                "if": "{{_local.loginErrors?.password}}",
+                "props": {
+                  "className": "ac_field_error"
+                },
+                "text": "Password is required."
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_auth_aux"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Button",
+                    "props": {
+                      "type": "button",
+                      "className": "ac_auth_link_button"
+                    },
+                    "text": "Forgot password?",
+                    "actions": [
+                      {
+                        "type": "click",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "/forgot-password"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Button",
+            "props": {
+              "type": "submit",
+              "className": "{{_local.isLoggingIn ? 'ac_submit_button is_loading' : 'ac_submit_button'}}",
+              "disabled": "{{_local.isLoggingIn}}"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Span",
+                "if": "{{!_local.isLoggingIn}}",
+                "props": {
+                  "className": "ac_submit_button_label"
+                },
+                "text": "Login"
+              },
+              {
+                "type": "basic",
+                "name": "Span",
+                "if": "{{_local.isLoggingIn}}",
+                "props": {
+                  "className": "ac_submit_button_label"
+                },
+                "text": "Logging in..."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

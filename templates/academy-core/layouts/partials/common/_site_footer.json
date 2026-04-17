@@ -13,8 +13,17 @@
           "type": "basic",
           "name": "Div",
           "children": [
-            {"type": "basic", "name": "Div", "text": "Academy Core presents programs, instructors, schedules, and consultation pathways in one structured template."},
-            {"type": "basic", "name": "Div", "props": {"className": "ac_footer_note"}, "text": "Campus hours: Mon to Sat, 08:30 to 22:00"}
+            {
+              "type": "basic",
+              "name": "Div",
+              "text": "{{_global.settings?.general?.site_description || 'Academy Core presents programs, instructors, schedules, and consultation pathways in one structured template.'}}"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_footer_note"},
+              "text": "{{(_global.settings?.general?.site_name || 'Academy Core') + ' user template'}}"
+            }
           ]
         },
         {

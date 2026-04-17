@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Academy Core Template Thumbnail</title>
+  <desc id="desc">Preview thumbnail for the Academy Core user template.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102542" />
+      <stop offset="100%" stop-color="#1f6f78" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="80" y="72" width="1040" height="486" rx="32" fill="#f6fbff" opacity="0.96" />
+  <rect x="140" y="132" width="320" height="20" rx="10" fill="#1f6f78" opacity="0.28" />
+  <rect x="140" y="182" width="420" height="72" rx="20" fill="#102542" />
+  <rect x="140" y="282" width="520" height="18" rx="9" fill="#102542" opacity="0.22" />
+  <rect x="140" y="318" width="480" height="18" rx="9" fill="#102542" opacity="0.16" />
+  <rect x="140" y="380" width="160" height="46" rx="23" fill="#1f6f78" />
+  <rect x="720" y="154" width="320" height="120" rx="24" fill="#d7eef2" />
+  <rect x="720" y="300" width="150" height="150" rx="24" fill="#c5d8f0" />
+  <rect x="890" y="300" width="150" height="150" rx="24" fill="#cfe8d2" />
+  <text x="140" y="228" fill="#ffffff" font-size="42" font-family="Arial, sans-serif" font-weight="700">Academy Core</text>
+  <text x="140" y="505" fill="#102542" font-size="28" font-family="Arial, sans-serif">Academy-oriented user template bundle</text>
+</svg>

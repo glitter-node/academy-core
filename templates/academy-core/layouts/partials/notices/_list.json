@@ -11,22 +11,73 @@
     {
       "type": "basic",
       "name": "Div",
+      "if": "{{(noticePosts?.data?.data ?? []).length > 0}}",
       "props": {
-        "className": "ac_notice_item"
+        "className": "ac_notice_stack"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "iteration": {
+            "source": "{{noticePosts?.data?.data ?? []}}",
+            "item_var": "notice"
+          },
+          "props": {
+            "className": "ac_notice_item"
+          },
+          "children": [
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_notice_date"
+              },
+              "text": "{{notice?.created_at_formatted || notice?.created_at || 'Notice'}}"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_notice_title"
+              },
+              "text": "{{notice?.title || 'Academy notice'}}"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_notice_desc"
+              },
+              "text": "{{notice?.content_preview || 'A new academy notice is available on the public board.'}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{(noticePosts?.data?.data ?? []).length === 0}}",
+      "props": {
+        "className": "ac_notice_stack"
       },
       "children": [
         {
           "type": "basic",
           "name": "Div",
           "props": {
-            "className": "ac_notice_date"
+            "className": "ac_notice_item"
           },
-          "text": "Apr 2026"
-        },
-        {
-          "type": "basic",
-          "name": "Div",
           "children": [
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_notice_date"
+              },
+              "text": "Apr 2026"
+            },
             {
               "type": "basic",
               "name": "Div",
@@ -39,33 +90,27 @@
               "type": "basic",
               "name": "Div",
               "props": {
-                "className": "ac_notice_copy"
+                "className": "ac_notice_desc"
               },
               "text": "Families can use the consultation route to request a study plan review, level recommendation, and first campus conversation."
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "basic",
-      "name": "Div",
-      "props": {
-        "className": "ac_notice_item"
-      },
-      "children": [
-        {
-          "type": "basic",
-          "name": "Div",
-          "props": {
-            "className": "ac_notice_date"
-          },
-          "text": "May 2026"
         },
         {
           "type": "basic",
           "name": "Div",
+          "props": {
+            "className": "ac_notice_item"
+          },
           "children": [
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_notice_date"
+              },
+              "text": "May 2026"
+            },
             {
               "type": "basic",
               "name": "Div",
@@ -78,33 +123,27 @@
               "type": "basic",
               "name": "Div",
               "props": {
-                "className": "ac_notice_copy"
+                "className": "ac_notice_desc"
               },
               "text": "Use this area for schedule reminders, family briefings, campus announcements, or seasonal enrollment updates."
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "basic",
-      "name": "Div",
-      "props": {
-        "className": "ac_notice_item"
-      },
-      "children": [
-        {
-          "type": "basic",
-          "name": "Div",
-          "props": {
-            "className": "ac_notice_date"
-          },
-          "text": "Jun 2026"
         },
         {
           "type": "basic",
           "name": "Div",
+          "props": {
+            "className": "ac_notice_item"
+          },
           "children": [
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_notice_date"
+              },
+              "text": "Jun 2026"
+            },
             {
               "type": "basic",
               "name": "Div",
@@ -117,7 +156,7 @@
               "type": "basic",
               "name": "Div",
               "props": {
-                "className": "ac_notice_copy"
+                "className": "ac_notice_desc"
               },
               "text": "The timetable route can be updated alongside this notice area when the academy is ready to publish a seasonal schedule."
             }

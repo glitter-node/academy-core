@@ -1,24 +1,81 @@
 {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "templateId": "academy-core",
   "version": "1.0.0",
   "components": {
     "basic": [
-      {"name": "Button", "type": "basic"},
-      {"name": "Div", "type": "basic"},
-      {"name": "Form", "type": "basic"},
-      {"name": "Input", "type": "basic"},
-      {"name": "Label", "type": "basic"},
-      {"name": "Textarea", "type": "basic"},
-      {"name": "P", "type": "basic"},
-      {"name": "Span", "type": "basic"},
-      {"name": "Table", "type": "basic"},
-      {"name": "Thead", "type": "basic"},
-      {"name": "Tbody", "type": "basic"},
-      {"name": "Tr", "type": "basic"},
-      {"name": "Th", "type": "basic"},
-      {"name": "Td", "type": "basic"}
+      {"name": "Button", "type": "basic", "description": "HTML button element wrapper"},
+      {"name": "Div", "type": "basic", "description": "HTML div element wrapper"},
+      {"name": "Form", "type": "basic", "description": "HTML form element wrapper"},
+      {"name": "Img", "type": "basic", "description": "HTML img element wrapper"},
+      {"name": "Input", "type": "basic", "description": "HTML input element wrapper"},
+      {"name": "Label", "type": "basic", "description": "HTML label element wrapper"},
+      {"name": "Select", "type": "basic", "description": "HTML select element wrapper"},
+      {"name": "Option", "type": "basic", "description": "HTML option element wrapper"},
+      {"name": "Textarea", "type": "basic", "description": "HTML textarea element wrapper"},
+      {"name": "P", "type": "basic", "description": "HTML p element wrapper"},
+      {"name": "Span", "type": "basic", "description": "HTML span element wrapper"},
+      {"name": "Table", "type": "basic", "description": "HTML table element wrapper"},
+      {"name": "Thead", "type": "basic", "description": "HTML thead element wrapper"},
+      {"name": "Tbody", "type": "basic", "description": "HTML tbody element wrapper"},
+      {"name": "Tr", "type": "basic", "description": "HTML tr element wrapper"},
+      {"name": "Th", "type": "basic", "description": "HTML th element wrapper"},
+      {"name": "Td", "type": "basic", "description": "HTML td element wrapper"}
     ],
-    "composite": [],
+    "composite": [
+      {
+        "name": "HtmlContent",
+        "type": "composite",
+        "description": "Rich HTML content renderer",
+        "path": "src/components/composite/HtmlContent.tsx",
+        "props": {
+          "content": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "description": "Rendered text or HTML content"
+          },
+          "isHtml": {
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "description": "Whether content should be rendered as raw HTML"
+          },
+          "className": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "description": "Optional wrapper class"
+          }
+        }
+      },
+      {
+        "name": "ThemeToggle",
+        "type": "composite",
+        "description": "Theme mode toggle for academy-core",
+        "path": "src/components/composite/ThemeToggle.tsx",
+        "props": {
+          "autoText": {
+            "type": "string",
+            "required": false,
+            "default": "$t:common.theme.auto",
+            "description": "Auto theme label"
+          },
+          "lightText": {
+            "type": "string",
+            "required": false,
+            "default": "$t:common.theme.light",
+            "description": "Light theme label"
+          },
+          "darkText": {
+            "type": "string",
+            "required": false,
+            "default": "$t:common.theme.dark",
+            "description": "Dark theme label"
+          }
+        }
+      }
+    ],
     "layout": []
   }
 }

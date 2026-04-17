@@ -5,101 +5,1028 @@
   "type": "basic",
   "name": "Div",
   "props": {
-    "className": "ac_form_card"
+    "className": "ac_page_stack"
   },
   "children": [
     {
       "type": "basic",
-      "name": "Form",
+      "name": "Div",
+      "if": "{{_local?.verificationSuccess}}",
       "props": {
-        "className": "ac_form_grid"
+        "className": "ac_card ac_status_card ac_status_success"
+      },
+      "text": "{{_local?.verificationSuccess}}"
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.verificationError}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_error"
+      },
+      "text": "{{_local?.verificationError}}"
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.servicesError}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_info"
+      },
+      "text": "{{_local?.servicesError}}"
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.slotError}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_error"
+      },
+      "text": "{{_local?.slotError}}"
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.hasSearchedSlots === true && _local?.slotMessage}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_info"
+      },
+      "text": "{{_local?.slotMessage}}"
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.bookingError}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_error"
+      },
+      "text": "{{_local?.bookingError}}"
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.bookingSuccess}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_success"
+      },
+      "text": "{{_local?.bookingSuccess}}"
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.verificationStatus?.verified !== true}}",
+      "props": {
+        "className": "ac_form_card"
       },
       "children": [
         {
           "type": "basic",
           "name": "Div",
           "props": {
-            "className": "ac_field"
+            "className": "ac_section_header"
           },
           "children": [
-            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Student Name"},
-            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the student name"}}
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_label"
+              },
+              "text": "Step 1"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_title"
+              },
+              "text": "Verify your email before booking"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_copy"
+              },
+              "text": "The reservation module requires a verified email before any booking request can be submitted."
+            }
           ]
         },
         {
           "type": "basic",
           "name": "Div",
+          "if": "{{_global.currentUser?.email && _local?.verificationStatus?.verified !== true}}",
           "props": {
-            "className": "ac_field"
+            "className": "ac_card ac_status_card ac_status_info"
           },
           "children": [
-            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Guardian Contact"},
-            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter a phone number or email"}}
+            {
+              "type": "basic",
+              "name": "P",
+              "text": "Signed in as {{_global.currentUser?.email}}"
+            },
+            {
+              "type": "basic",
+              "name": "P",
+              "text": "Consultation booking still requires a separate reservation email verification, even when you are already signed in."
+            },
+            {
+              "type": "basic",
+              "name": "Button",
+              "props": {
+                "type": "button",
+                "className": "ac_button_secondary"
+              },
+              "text": "Use Signed-In Email",
+              "actions": [
+                {
+                  "type": "click",
+                  "handler": "setState",
+                  "params": {
+                    "target": "local",
+                    "verificationForm": {
+                      "email": "{{_global.currentUser?.email ?? ''}}"
+                    },
+                    "verificationError": null,
+                    "verificationSuccess": null
+                  }
+                }
+              ]
+            }
           ]
+        },
+        {
+          "type": "basic",
+          "name": "Form",
+          "props": {
+            "className": "ac_form_grid"
+          },
+          "children": [
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field ac_field_full"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Email Address"
+                },
+                {
+                  "type": "basic",
+                  "name": "Input",
+                  "props": {
+                    "type": "email",
+                    "value": "{{_local?.verificationForm?.email ?? ''}}",
+                    "placeholder": "name@example.com",
+                    "className": "ac_input",
+                    "disabled": "{{_local?.isSendingVerification}}"
+                  },
+                  "actions": [
+                    {
+                      "type": "change",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "verificationForm": {
+                          "email": "{{$event.target.value.trim()}}"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "ac_button",
+                    "disabled": "{{_local?.isSendingVerification || !(_local?.verificationForm?.email ?? '')}}"
+                  },
+                  "text": "{{_local?.isSendingVerification ? 'Sending Verification...' : 'Send Verification Link'}}",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "sequence",
+                      "actions": [
+                        {
+                          "handler": "setState",
+                          "params": {
+                            "target": "local",
+                            "isSendingVerification": true,
+                            "verificationError": null,
+                            "verificationSuccess": null
+                          }
+                        },
+                        {
+                          "handler": "apiCall",
+                          "target": "/modules/glitter-reservation/reservation/email-verifications",
+                          "params": {
+                            "method": "POST",
+                            "body": {
+                              "email": "{{_local?.verificationForm?.email ?? ''}}"
+                            }
+                          },
+                          "onSuccess": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "isSendingVerification": false,
+                                "verificationSuccess": "{{response.data?.message ?? 'A verification link has been sent to your email address.'}}"
+                              }
+                            }
+                          ],
+                          "onError": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "isSendingVerification": false,
+                                "verificationError": "Verification email could not be sent."
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "ac_button_secondary"
+                  },
+                  "text": "Refresh Verification Status",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "apiCall",
+                      "target": "/modules/glitter-reservation/reservation/verification-status",
+                      "params": {
+                        "method": "GET"
+                      },
+                      "onSuccess": [
+                        {
+                          "handler": "setState",
+                          "params": {
+                            "target": "local",
+                            "verificationStatus": "{{response.data ?? { verified: false, email: null, expires_at: null }}}",
+                            "verificationForm": {
+                              "email": "{{response.data?.email ?? _local?.verificationForm?.email ?? ''}}"
+                            },
+                            "verificationError": null,
+                            "verificationSuccess": "{{response.data?.verified === true ? 'Email verification is complete. You can continue with the booking.' : _local?.verificationSuccess ?? null}}"
+                          }
+                        }
+                      ],
+                      "onError": [
+                        {
+                          "handler": "setState",
+                          "params": {
+                            "target": "local",
+                            "verificationError": "Verification status could not be refreshed."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.verificationStatus?.verified === true}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_success"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_section_label"
+          },
+          "text": "Verified Email"
         },
         {
           "type": "basic",
           "name": "Div",
           "props": {
-            "className": "ac_field"
+            "className": "ac_card_title"
           },
-          "children": [
-            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Current Grade"},
-            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the current grade"}}
-          ]
+          "text": "{{_local?.verificationStatus?.email ?? ''}}"
         },
         {
           "type": "basic",
           "name": "Div",
+          "if": "{{_local?.verificationStatus?.expires_at}}",
           "props": {
-            "className": "ac_field"
+            "className": "ac_card_copy"
           },
-          "children": [
-            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Preferred Start"},
-            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the preferred start month"}}
-          ]
-        },
+          "text": "Verification expires at {{_local?.verificationStatus?.expires_at}}"
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.verificationStatus?.verified === true && _local?.isLoadingServices}}",
+      "props": {
+        "className": "ac_card ac_status_card ac_status_info"
+      },
+      "text": "Loading consultation services..."
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.verificationStatus?.verified === true && !_local?.isLoadingServices && ((_local?.services?.data ?? _local?.services ?? []).length === 0)}}",
+      "props": {
+        "className": "ac_form_card"
+      },
+      "children": [
         {
           "type": "basic",
           "name": "Div",
           "props": {
-            "className": "ac_field"
+            "className": "ac_section_header"
           },
           "children": [
-            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Primary Subject"},
-            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the main subject focus"}}
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_label"
+              },
+              "text": "Consultation Booking"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_title"
+              },
+              "text": "Services are not open for public booking yet"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_copy"
+              },
+              "text": "The consultation page remains available, but live reservation services are not currently published. Check again later to complete a real booking request."
+            }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local?.verificationStatus?.verified === true && ((_local?.services?.data ?? _local?.services ?? []).length > 0)}}",
+      "props": {
+        "className": "ac_form_card"
+      },
+      "children": [
         {
           "type": "basic",
           "name": "Div",
           "props": {
-            "className": "ac_field"
+            "className": "ac_section_header"
           },
           "children": [
-            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Preferred Campus Visit"},
-            {"type": "basic", "name": "Input", "props": {"className": "ac_input", "placeholder": "Enter the preferred visit date"}}
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_label"
+              },
+              "text": "Step 2"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_title"
+              },
+              "text": "Choose a consultation service and booking time"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_section_copy"
+              },
+              "text": "Select a service, search available slots, and submit the booking details once a time is chosen."
+            }
           ]
         },
         {
           "type": "basic",
-          "name": "Div",
+          "name": "Form",
           "props": {
-            "className": "ac_field ac_field_full"
+            "className": "ac_form_grid"
           },
           "children": [
-            {"type": "basic", "name": "Label", "props": {"className": "ac_label"}, "text": "Learning Goals"},
-            {"type": "basic", "name": "Textarea", "props": {"className": "ac_textarea", "placeholder": "Share the learning goals, current challenges, and support needed."}}
-          ]
-        },
-        {
-          "type": "basic",
-          "name": "Div",
-          "props": {
-            "className": "ac_field ac_field_full"
-          },
-          "children": [
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button"}, "text": "Consultation Preview"}
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Consultation Service"
+                },
+                {
+                  "type": "basic",
+                  "name": "Select",
+                  "props": {
+                    "value": "{{_local?.selectedServiceId ?? _local?.bookingForm?.service_id}}",
+                    "className": "ac_input ac_native_select",
+                    "disabled": "{{_local?.isLoadingServices || _local?.isSubmittingBooking}}"
+                  },
+                  "children": [
+                    {
+                      "type": "basic",
+                      "name": "Option",
+                      "props": {
+                        "value": ""
+                      },
+                      "text": "Select a service"
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Option",
+                      "iteration": {
+                        "source": "(_local?.services?.data ?? _local?.services ?? [])",
+                        "item_var": "service"
+                      },
+                      "props": {
+                        "value": "{{service.id}}"
+                      },
+                      "text": "{{service.name}}"
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": "change",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "selectedServiceId": "{{$event.target.value}}",
+                        "bookingForm": {
+                          "service_id": "{{$event.target.value}}",
+                          "booking_date": "{{_local?.bookingForm?.booking_date}}",
+                          "booking_time": "",
+                          "customer_name": "{{_local?.bookingForm?.customer_name}}",
+                          "customer_phone": "{{_local?.bookingForm?.customer_phone}}",
+                          "memo": "{{_local?.bookingForm?.memo}}"
+                        },
+                        "hasSearchedSlots": false,
+                        "slots": [],
+                        "slotError": null,
+                        "slotMessage": null,
+                        "bookingErrors": null,
+                        "bookingError": null,
+                        "bookingSuccess": null
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "if": "{{_local?.bookingForm?.service_id}}",
+                  "props": {
+                    "className": "ac_consultation_hint"
+                  },
+                  "text": "{{(_local?.services?.data ?? _local?.services ?? []).find(service => String(service.id) === String(_local?.selectedServiceId ?? _local?.bookingForm?.service_id ?? null))?.description ?? null}}"
+                },
+                {
+                  "type": "basic",
+                  "name": "Span",
+                  "if": "{{_local?.bookingErrors?.service_id}}",
+                  "props": {
+                    "className": "ac_consultation_error"
+                  },
+                  "text": "{{_local?.bookingErrors?.service_id?.[0] ?? ''}}"
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Booking Date"
+                },
+                {
+                  "type": "basic",
+                  "name": "Input",
+                  "props": {
+                    "type": "date",
+                    "value": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                    "className": "ac_input",
+                    "disabled": "{{_local?.isSubmittingBooking}}"
+                  },
+                  "actions": [
+                    {
+                      "type": "change",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "bookingForm": {
+                          "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                          "booking_date": "{{$event.target.value}}",
+                          "booking_time": "",
+                          "customer_name": "{{_local?.bookingForm?.customer_name ?? ''}}",
+                          "customer_phone": "{{_local?.bookingForm?.customer_phone ?? ''}}",
+                          "memo": "{{_local?.bookingForm?.memo ?? ''}}"
+                        },
+                        "hasSearchedSlots": false,
+                        "slots": [],
+                        "slotError": null,
+                        "slotMessage": null,
+                        "bookingErrors": null,
+                        "bookingError": null,
+                        "bookingSuccess": null
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Span",
+                  "if": "{{_local?.bookingErrors?.booking_date}}",
+                  "props": {
+                    "className": "ac_consultation_error"
+                  },
+                  "text": "{{_local?.bookingErrors?.booking_date?.[0] ?? ''}}"
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field ac_field_full"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "ac_button",
+                    "disabled": "{{_local?.isLoadingSlots || !(_local?.bookingForm?.service_id ?? '') || !(_local?.bookingForm?.booking_date ?? '')}}"
+                  },
+                  "text": "{{_local?.isLoadingSlots ? 'Loading Available Slots...' : 'Check Available Slots'}}",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "sequence",
+                      "actions": [
+                        {
+                          "handler": "setState",
+                          "params": {
+                            "target": "local",
+                            "isLoadingSlots": true,
+                            "hasSearchedSlots": false,
+                            "slotError": null,
+                            "slotMessage": null,
+                            "slots": [],
+                            "bookingErrors": null,
+                            "bookingError": null,
+                            "bookingSuccess": null,
+                            "bookingForm": {
+                              "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                              "booking_date": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                              "booking_time": "",
+                              "customer_name": "{{_local?.bookingForm?.customer_name ?? ''}}",
+                              "customer_phone": "{{_local?.bookingForm?.customer_phone ?? ''}}",
+                              "memo": "{{_local?.bookingForm?.memo ?? ''}}"
+                            }
+                          }
+                        },
+                        {
+                          "handler": "apiCall",
+                          "target": "/modules/glitter-reservation/reservation/slots?service_id={{_local?.bookingForm?.service_id ?? ''}}&booking_date={{_local?.bookingForm?.booking_date ?? ''}}",
+                          "params": {
+                            "method": "GET"
+                          },
+                          "onSuccess": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "isLoadingSlots": false,
+                                "hasSearchedSlots": true,
+                                "slots": "{{response.data?.slots ?? []}}",
+                                "slotMessage": "{{(response.data?.slots ?? []).length === 0 ? 'No consultation slots are open for the selected date.' : null}}"
+                              }
+                            }
+                          ],
+                          "onError": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "isLoadingSlots": false,
+                                "hasSearchedSlots": true,
+                                "slotError": "Available time slots could not be loaded."
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "if": "{{(_local?.slots ?? []).length > 0}}",
+              "props": {
+                "className": "ac_field ac_field_full"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Available Time Slots"
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_slot_grid"
+                  },
+                  "iteration": {
+                    "source": "{{_local?.slots ?? []}}",
+                    "item_var": "slot",
+                    "index_var": "slotIndex"
+                  },
+                  "children": [
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_slot_button {{_local?.bookingForm?.booking_time === slot ? 'ac_slot_button_active' : ''}}"
+                      },
+                      "text": "{{slot}}",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "setState",
+                          "params": {
+                            "target": "local",
+                            "bookingForm": {
+                              "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                              "booking_date": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                              "booking_time": "{{slot}}",
+                              "customer_name": "{{_local?.bookingForm?.customer_name ?? ''}}",
+                              "customer_phone": "{{_local?.bookingForm?.customer_phone ?? ''}}",
+                              "memo": "{{_local?.bookingForm?.memo ?? ''}}"
+                            },
+                            "bookingErrors": null,
+                            "bookingError": null,
+                            "bookingSuccess": null
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Span",
+                  "if": "{{_local?.bookingErrors?.booking_time}}",
+                  "props": {
+                    "className": "ac_consultation_error"
+                  },
+                  "text": "{{_local?.bookingErrors?.booking_time?.[0] ?? ''}}"
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Student or Guardian Name"
+                },
+                {
+                  "type": "basic",
+                  "name": "Input",
+                  "props": {
+                    "type": "text",
+                    "value": "{{_local?.bookingForm?.customer_name ?? ''}}",
+                    "placeholder": "Enter the booking name",
+                    "className": "ac_input",
+                    "disabled": "{{_local?.isSubmittingBooking}}"
+                  },
+                  "actions": [
+                    {
+                      "type": "change",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "bookingForm": {
+                          "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                          "booking_date": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                          "booking_time": "{{_local?.bookingForm?.booking_time ?? ''}}",
+                          "customer_name": "{{$event.target.value}}",
+                          "customer_phone": "{{_local?.bookingForm?.customer_phone ?? ''}}",
+                          "memo": "{{_local?.bookingForm?.memo ?? ''}}"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Span",
+                  "if": "{{_local?.bookingErrors?.customer_name}}",
+                  "props": {
+                    "className": "ac_consultation_error"
+                  },
+                  "text": "{{_local?.bookingErrors?.customer_name?.[0] ?? ''}}"
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Phone Number"
+                },
+                {
+                  "type": "basic",
+                  "name": "Input",
+                  "props": {
+                    "type": "tel",
+                    "inputMode": "numeric",
+                    "pattern": "[0-9]{10,11}",
+                    "maxLength": 11,
+                    "value": "{{_local?.bookingForm?.customer_phone ?? ''}}",
+                    "placeholder": "01012345678",
+                    "className": "ac_input",
+                    "disabled": "{{_local?.isSubmittingBooking}}"
+                  },
+                  "actions": [
+                    {
+                      "type": "change",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "bookingForm": {
+                          "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                          "booking_date": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                          "booking_time": "{{_local?.bookingForm?.booking_time ?? ''}}",
+                          "customer_name": "{{_local?.bookingForm?.customer_name ?? ''}}",
+                          "customer_phone": "{{$event.target.value.replace(/[^0-9]/g, '').slice(0, 11)}}",
+                          "memo": "{{_local?.bookingForm?.memo ?? ''}}"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Span",
+                  "if": "{{_local?.bookingErrors?.customer_phone}}",
+                  "props": {
+                    "className": "ac_consultation_error"
+                  },
+                  "text": "{{_local?.bookingErrors?.customer_phone?.[0] ?? ''}}"
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Verified Email"
+                },
+                {
+                  "type": "basic",
+                  "name": "Input",
+                  "props": {
+                    "type": "email",
+                    "value": "{{_local?.verificationStatus?.email ?? ''}}",
+                    "className": "ac_input",
+                    "disabled": true
+                  }
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field ac_field_full"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Label",
+                  "props": {
+                    "className": "ac_label"
+                  },
+                  "text": "Consultation Notes"
+                },
+                {
+                  "type": "basic",
+                  "name": "Textarea",
+                  "props": {
+                    "rows": 5,
+                    "value": "{{_local?.bookingForm?.memo ?? ''}}",
+                    "placeholder": "Share the current learning concerns, target subject, and any scheduling notes.",
+                    "className": "ac_textarea",
+                    "disabled": "{{_local?.isSubmittingBooking}}"
+                  },
+                  "actions": [
+                    {
+                      "type": "change",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "bookingForm": {
+                          "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                          "booking_date": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                          "booking_time": "{{_local?.bookingForm?.booking_time ?? ''}}",
+                          "customer_name": "{{_local?.bookingForm?.customer_name ?? ''}}",
+                          "customer_phone": "{{_local?.bookingForm?.customer_phone ?? ''}}",
+                          "memo": "{{$event.target.value}}"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_field ac_field_full"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "ac_button",
+                    "disabled": "{{_local?.isSubmittingBooking || !(_local?.bookingForm?.service_id ?? '') || !(_local?.bookingForm?.booking_date ?? '') || !(_local?.bookingForm?.booking_time ?? '') || !(_local?.bookingForm?.customer_name ?? '') || !(_local?.bookingForm?.customer_phone ?? '')}}"
+                  },
+                  "text": "{{_local?.isSubmittingBooking ? 'Submitting Booking...' : 'Submit Consultation Booking'}}",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "sequence",
+                      "actions": [
+                        {
+                          "handler": "setState",
+                          "params": {
+                            "target": "local",
+                            "isSubmittingBooking": true,
+                            "bookingErrors": null,
+                            "bookingError": null,
+                            "bookingSuccess": null
+                          }
+                        },
+                        {
+                          "handler": "apiCall",
+                          "target": "/modules/glitter-reservation/reservation/bookings",
+                          "params": {
+                            "method": "POST",
+                            "body": {
+                              "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                              "booking_date": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                              "booking_time": "{{_local?.bookingForm?.booking_time ?? ''}}",
+                              "customer_name": "{{_local?.bookingForm?.customer_name ?? ''}}",
+                              "customer_phone": "{{_local?.bookingForm?.customer_phone ?? ''}}",
+                              "customer_email": "{{_local?.verificationStatus?.email ?? ''}}",
+                              "memo": "{{_local?.bookingForm?.memo ?? ''}}"
+                            }
+                          },
+                          "onSuccess": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "isSubmittingBooking": false,
+                                "bookingSuccess": "{{'Consultation booking submitted. Reference #' + (response.data?.id ?? '-') + ' / Status: ' + (response.data?.status ?? '-')}}",
+                                "bookingForm": {
+                                  "service_id": "{{_local?.bookingForm?.service_id ?? ''}}",
+                                  "booking_date": "{{_local?.bookingForm?.booking_date ?? ''}}",
+                                  "booking_time": "",
+                                  "customer_name": "",
+                                  "customer_phone": "",
+                                  "memo": ""
+                                },
+                                "slots": [],
+                                "hasSearchedSlots": false,
+                                "slotError": null,
+                                "slotMessage": null
+                              }
+                            }
+                          ],
+                          "onError": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "isSubmittingBooking": false,
+                                "bookingErrors": "{{error.response?.errors ?? error.errors}}",
+                                "bookingError": "Consultation booking could not be submitted."
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         }
       ]

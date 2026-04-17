@@ -17,6 +17,69 @@
     {
       "type": "basic",
       "name": "Div",
+      "if": "{{(homeProgramPosts?.data?.data ?? []).length > 0}}",
+      "props": {"className": "ac_grid_3"},
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "iteration": {
+            "source": "{{homeProgramPosts?.data?.data ?? []}}",
+            "item_var": "program"
+          },
+          "props": {"className": "ac_card"},
+          "children": [
+            {
+              "type": "basic",
+              "name": "Img",
+              "if": "{{program?.thumbnail}}",
+              "props": {
+                "src": "{{program?.thumbnail}}",
+                "alt": "{{program?.title || 'Program image'}}",
+                "className": "ac_card_media_img"
+              }
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_card_media_placeholder"},
+              "if": "{{!program?.thumbnail}}",
+              "text": "Program"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_badge"},
+              "if": "{{program?.category}}",
+              "text": "{{program?.category}}"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_card_kicker"},
+              "if": "{{!program?.category}}",
+              "text": "Featured"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_card_title"},
+              "text": "{{program?.title || 'Program'}}"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_card_copy"},
+              "text": "{{program?.content_preview || program?.content || 'A featured program is available on the public board.'}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{(homeProgramPosts?.data?.data ?? []).length === 0}}",
       "props": {"className": "ac_grid_3"},
       "children": [
         {"type": "basic", "name": "Div", "props": {"className": "ac_card"}, "children": [{"type": "basic", "name": "Div", "props": {"className": "ac_card_kicker"}, "text": "Foundation"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Starter Track"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Daily study discipline, concept review, and guided homework support for students building consistency."}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_meta"}, "text": "Best for first stage learners"}]},

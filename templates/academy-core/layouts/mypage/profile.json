@@ -1,0 +1,286 @@
+{
+  "version": "1.0.0",
+  "layout_name": "mypage/profile",
+  "extends": "mypage/_mypage_base",
+  "data_sources": [
+    {
+      "id": "profile",
+      "type": "api",
+      "endpoint": "/api/me",
+      "method": "GET",
+      "auto_fetch": true,
+      "auth_required": true,
+      "loading_strategy": "progressive",
+      "initLocal": "profileForm"
+    }
+  ],
+  "init_actions": [
+    {
+      "handler": "setState",
+      "params": {
+        "target": "local",
+        "isSaving": false,
+        "saveError": null,
+        "saveErrors": null,
+        "saveSuccess": false
+      }
+    }
+  ],
+  "slots": {
+    "mypage_body": [
+      {
+        "type": "basic",
+        "name": "Div",
+        "if": "{{_local.saveSuccess}}",
+        "props": {
+          "className": "ac_form_message is_success"
+        },
+        "children": [
+          {"type": "basic", "name": "P", "text": "Profile updated successfully."}
+        ]
+      },
+      {
+        "type": "basic",
+        "name": "Div",
+        "if": "{{_local.saveError}}",
+        "props": {
+          "className": "ac_form_message is_error"
+        },
+        "children": [
+          {"type": "basic", "name": "P", "text": "{{_local.saveError}}"}
+        ]
+      },
+      {
+        "type": "basic",
+        "name": "Form",
+        "dataKey": "profileForm",
+        "props": {
+          "className": "ac_form_stack"
+        },
+        "actions": [
+          {
+            "type": "submit",
+            "handler": "sequence",
+            "actions": [
+              {
+                "handler": "setState",
+                "params": {
+                  "target": "local",
+                  "isSaving": true,
+                  "saveError": null,
+                  "saveErrors": null,
+                  "saveSuccess": false
+                }
+              },
+              {
+                "handler": "apiCall",
+                "auth_required": true,
+                "target": "/api/me",
+                "params": {
+                  "method": "PUT",
+                  "body": {
+                    "name": "{{profileForm.name}}",
+                    "nickname": "{{profileForm.nickname}}",
+                    "email": "{{profileForm.email}}",
+                    "language": "{{profileForm.language}}",
+                    "mobile": "{{profileForm.mobile}}",
+                    "phone": "{{profileForm.phone}}",
+                    "homepage": "{{profileForm.homepage}}",
+                    "zipcode": "{{profileForm.zipcode}}",
+                    "address": "{{profileForm.address}}",
+                    "address_detail": "{{profileForm.address_detail}}",
+                    "bio": "{{profileForm.bio}}"
+                  }
+                },
+                "onSuccess": [
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "local",
+                      "isSaving": false,
+                      "saveSuccess": true,
+                      "saveErrors": null
+                    }
+                  },
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "global",
+                      "currentUser": "{{response.data ?? response.user ?? _global.currentUser}}"
+                    }
+                  },
+                  {
+                    "handler": "toast",
+                    "params": {
+                      "type": "success",
+                      "message": "Profile updated successfully."
+                    }
+                  }
+                ],
+                "onError": [
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "local",
+                      "isSaving": false,
+                      "saveError": "{{error.errors ? 'Please review the highlighted profile fields.' : 'Unable to update your profile.'}}",
+                      "saveErrors": "{{error.errors}}"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "children": [
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field_grid"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Name"},
+                  {"type": "basic", "name": "Input", "props": {"type": "text", "name": "name", "className": "ac_input", "required": true, "disabled": "{{_local.isSaving}}"}},
+                  {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.name}}", "props": {"className": "ac_field_error"}, "text": "Name is required."}
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Nickname"},
+                  {"type": "basic", "name": "Input", "props": {"type": "text", "name": "nickname", "className": "ac_input", "disabled": "{{_local.isSaving}}"}},
+                  {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.nickname}}", "props": {"className": "ac_field_error"}, "text": "Nickname must be 50 characters or fewer."}
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field_grid"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Email"},
+                  {"type": "basic", "name": "Input", "props": {"type": "email", "name": "email", "className": "ac_input", "required": true, "disabled": "{{_local.isSaving}}"}},
+                  {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.email}}", "props": {"className": "ac_field_error"}, "text": "Enter a valid email address."}
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Language"},
+                  {
+                    "type": "basic",
+                    "name": "Select",
+                    "props": {
+                      "name": "language",
+                      "className": "ac_input",
+                      "disabled": "{{_local.isSaving}}"
+                    },
+                    "children": [
+                      {"type": "basic", "name": "Option", "props": {"value": "en"}, "text": "English"},
+                      {"type": "basic", "name": "Option", "props": {"value": "ko"}, "text": "Korean"}
+                    ]
+                  },
+                  {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.language}}", "props": {"className": "ac_field_error"}, "text": "Select a supported language."}
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field_grid"
+            },
+            "children": [
+              {"type": "basic", "name": "Div", "props": {"className": "ac_field"}, "children": [{"type": "basic", "name": "Label", "text": "Mobile"}, {"type": "basic", "name": "Input", "props": {"type": "text", "name": "mobile", "className": "ac_input", "disabled": "{{_local.isSaving}}"}}, {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.mobile}}", "props": {"className": "ac_field_error"}, "text": "Enter a valid mobile number."}]},
+              {"type": "basic", "name": "Div", "props": {"className": "ac_field"}, "children": [{"type": "basic", "name": "Label", "text": "Phone"}, {"type": "basic", "name": "Input", "props": {"type": "text", "name": "phone", "className": "ac_input", "disabled": "{{_local.isSaving}}"}}, {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.phone}}", "props": {"className": "ac_field_error"}, "text": "Enter a valid phone number."}]}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field"
+            },
+            "children": [
+              {"type": "basic", "name": "Label", "text": "Homepage"},
+              {"type": "basic", "name": "Input", "props": {"type": "url", "name": "homepage", "className": "ac_input", "disabled": "{{_local.isSaving}}"}},
+              {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.homepage}}", "props": {"className": "ac_field_error"}, "text": "Enter a valid website URL."}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field_grid"
+            },
+            "children": [
+              {"type": "basic", "name": "Div", "props": {"className": "ac_field"}, "children": [{"type": "basic", "name": "Label", "text": "Zipcode"}, {"type": "basic", "name": "Input", "props": {"type": "text", "name": "zipcode", "className": "ac_input", "disabled": "{{_local.isSaving}}"}}, {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.zipcode}}", "props": {"className": "ac_field_error"}, "text": "Enter a valid zipcode."}]},
+              {"type": "basic", "name": "Div", "props": {"className": "ac_field"}, "children": [{"type": "basic", "name": "Label", "text": "Address Detail"}, {"type": "basic", "name": "Input", "props": {"type": "text", "name": "address_detail", "className": "ac_input", "disabled": "{{_local.isSaving}}"}}, {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.address_detail}}", "props": {"className": "ac_field_error"}, "text": "Check the address details and try again."}]}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field"
+            },
+            "children": [
+              {"type": "basic", "name": "Label", "text": "Address"},
+              {"type": "basic", "name": "Input", "props": {"type": "text", "name": "address", "className": "ac_input", "disabled": "{{_local.isSaving}}"}},
+              {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.address}}", "props": {"className": "ac_field_error"}, "text": "Enter a valid address."}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field"
+            },
+            "children": [
+              {"type": "basic", "name": "Label", "text": "Bio"},
+              {"type": "basic", "name": "Textarea", "props": {"name": "bio", "className": "ac_textarea", "rows": 6, "disabled": "{{_local.isSaving}}"}},
+              {"type": "basic", "name": "P", "if": "{{_local.saveErrors?.bio}}", "props": {"className": "ac_field_error"}, "text": "Check your profile summary and try again."}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Button",
+            "props": {
+              "type": "submit",
+              "className": "ac_submit_button",
+              "disabled": "{{_local.isSaving}}"
+            },
+            "text": "{{_local.isSaving ? 'Saving...' : 'Save Changes'}}"
+          }
+        ]
+      }
+    ]
+  }
+}

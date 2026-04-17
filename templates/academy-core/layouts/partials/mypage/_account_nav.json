@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "is_partial": true
+  },
+  "type": "basic",
+  "name": "Div",
+  "props": {
+    "className": "ac_account_nav"
+  },
+  "children": [
+    {
+      "type": "basic",
+      "name": "Button",
+      "props": {
+        "type": "button",
+        "className": "{{route.path === '/mypage/profile' ? 'ac_account_nav_button is_active' : 'ac_account_nav_button'}}"
+      },
+      "text": "Account",
+      "actions": [
+        {
+          "type": "click",
+          "handler": "navigate",
+          "params": {
+            "path": "/mypage/profile"
+          }
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Button",
+      "props": {
+        "type": "button",
+        "className": "{{route.path === '/mypage/change-password' ? 'ac_account_nav_button is_active' : 'ac_account_nav_button'}}"
+      },
+      "text": "Change Password",
+      "actions": [
+        {
+          "type": "click",
+          "handler": "navigate",
+          "params": {
+            "path": "/mypage/change-password"
+          }
+        }
+      ]
+    }
+  ]
+}

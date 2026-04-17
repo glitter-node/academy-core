@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "layout_name": "auth/_auth_base",
+  "extends": "_user_base",
+  "slots": {
+    "content": [
+      {
+        "type": "basic",
+        "name": "Div",
+        "props": {
+          "className": "ac_auth_page"
+        },
+        "children": [
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "{{route.path === '/register' ? 'ac_auth_card ac_auth_card_wide' : 'ac_auth_card'}}"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "P",
+                "props": {
+                  "className": "ac_auth_eyebrow"
+                },
+                "text": "{{route.path === '/register' ? 'New Member' : route.path === '/forgot-password' ? 'Account Recovery' : route.path === '/reset-password' ? 'Reset Access' : 'Member Access'}}"
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_auth_title"
+                },
+                "text": "{{route.path === '/register' ? 'Sign Up' : route.path === '/forgot-password' ? 'Forgot Password' : route.path === '/reset-password' ? 'Reset Password' : 'Login'}}"
+              },
+              {
+                "type": "basic",
+                "name": "P",
+                "props": {
+                  "className": "ac_auth_intro"
+                },
+                "text": "{{route.path === '/register' ? 'Create your account using the existing academy membership flow.' : route.path === '/forgot-password' ? 'Enter the email address linked to your academy account and we will send a password reset link.' : route.path === '/reset-password' ? 'Use the reset link from your email to set a new password for your academy account.' : 'Sign in with your existing account to manage your classes and bookings.'}}"
+              },
+              {
+                "id": "ac_auth_body_slot",
+                "type": "basic",
+                "name": "Div",
+                "slot": "auth_body",
+                "children": [],
+                "props": {
+                  "className": "ac_auth_body"
+                }
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_auth_footer_links"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Span",
+                    "text": "{{route.path === '/register' ? 'Already have an account?' : route.path === '/forgot-password' ? 'Remembered your password?' : route.path === '/reset-password' ? 'Need another reset link?' : 'Need a new account?'}}",
+                    "props": {
+                      "className": "ac_auth_footer_text"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Button",
+                    "props": {
+                      "type": "button",
+                      "className": "ac_inline_button"
+                    },
+                    "text": "{{route.path === '/register' ? 'Login' : route.path === '/forgot-password' ? 'Login' : route.path === '/reset-password' ? 'Request again' : 'Sign Up'}}",
+                    "actions": [
+                      {
+                        "type": "click",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "{{route.path === '/register' ? '/login' : route.path === '/forgot-password' ? '/login' : route.path === '/reset-password' ? '/forgot-password' : '/register'}}"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

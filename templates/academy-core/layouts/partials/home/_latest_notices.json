@@ -17,6 +17,44 @@
     {
       "type": "basic",
       "name": "Div",
+      "if": "{{(homeNoticePosts?.data?.data ?? []).length > 0}}",
+      "props": {"className": "ac_grid_2"},
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "iteration": {
+            "source": "{{homeNoticePosts?.data?.data ?? []}}",
+            "item_var": "notice"
+          },
+          "props": {"className": "ac_card"},
+          "children": [
+            {
+              "type": "basic",
+              "name": "Span",
+              "props": {"className": "ac_badge"},
+              "text": "{{notice?.created_at_formatted || notice?.created_at || 'Notice'}}"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_card_title"},
+              "text": "{{notice?.title || 'Academy notice'}}"
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_card_copy"},
+              "text": "{{notice?.content_preview || 'A new academy notice is available on the public board.'}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{(homeNoticePosts?.data?.data ?? []).length === 0}}",
       "props": {"className": "ac_grid_2"},
       "children": [
         {"type": "basic", "name": "Div", "props": {"className": "ac_card"}, "children": [{"type": "basic", "name": "Span", "props": {"className": "ac_badge"}, "text": "Admissions"}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_title"}, "text": "Consultation intake remains open for new students."}, {"type": "basic", "name": "Div", "props": {"className": "ac_card_copy"}, "text": "Families can request subject planning and initial level review through the consultation form."}]},

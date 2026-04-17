@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title1 desc1">
+  <title id="title1">Academy Core Home Screenshot</title>
+  <desc id="desc1">Illustrative home layout preview for the Academy Core template.</desc>
+  <rect width="1440" height="900" fill="#eef5f7" />
+  <rect x="0" y="0" width="1440" height="88" fill="#102542" />
+  <rect x="110" y="32" width="180" height="24" rx="12" fill="#ffffff" opacity="0.9" />
+  <rect x="980" y="30" width="96" height="28" rx="14" fill="#1f6f78" />
+  <rect x="1096" y="30" width="128" height="28" rx="14" fill="#ffffff" opacity="0.18" />
+  <rect x="128" y="140" width="1184" height="260" rx="36" fill="#1f6f78" />
+  <rect x="176" y="190" width="320" height="26" rx="13" fill="#ffffff" opacity="0.4" />
+  <rect x="176" y="238" width="520" height="88" rx="24" fill="#ffffff" />
+  <rect x="176" y="350" width="180" height="48" rx="24" fill="#102542" />
+  <rect x="128" y="452" width="370" height="260" rx="28" fill="#ffffff" />
+  <rect x="535" y="452" width="370" height="260" rx="28" fill="#ffffff" />
+  <rect x="942" y="452" width="370" height="260" rx="28" fill="#ffffff" />
+  <rect x="170" y="496" width="180" height="20" rx="10" fill="#102542" opacity="0.2" />
+  <rect x="577" y="496" width="180" height="20" rx="10" fill="#102542" opacity="0.2" />
+  <rect x="984" y="496" width="180" height="20" rx="10" fill="#102542" opacity="0.2" />
+</svg>

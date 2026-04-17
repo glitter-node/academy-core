@@ -21,7 +21,10 @@
   "release_date": "2026-04-15",
   "g7_version": ">=7.0.0-beta.1",
   "dependencies": {
-    "modules": {},
+    "modules": {
+      "sirsoft-board": ">=0.1.1",
+      "sirsoft-page": ">=0.1.1"
+    },
     "plugins": {}
   },
   "assets": {
@@ -29,6 +32,24 @@
     "js": ["dist/js/components.iife.js"],
     "fonts": [],
     "images": []
+  },
+  "components": {
+    "basic": [
+      "button", "div", "form", "img", "input", "label", "option",
+      "p", "select", "span", "table", "tbody", "td", "textarea",
+      "th", "thead", "tr"
+    ],
+    "composite": [
+      "html-content", "theme-toggle"
+    ],
+    "layout": []
+  },
+  "preview": {
+    "thumbnail": "preview/thumbnail.svg",
+    "screenshots": [
+      "preview/screenshot1.svg",
+      "preview/screenshot2.svg"
+    ]
   },
   "error_config": {
     "layouts": {
@@ -41,7 +62,7 @@
     }
   },
   "features": {
-    "dark_mode": false,
+    "dark_mode": true,
     "responsive": true,
     "multi_language": true
   }

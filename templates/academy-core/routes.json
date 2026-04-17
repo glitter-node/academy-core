@@ -2,14 +2,21 @@
   "version": "1.0.0",
   "description": "Academy Core user template routes",
   "routes": [
-    {"path": "/", "layout": "home", "auth_required": false, "meta": {"title": "Academy Core Home"}},
-    {"path": "/about", "layout": "about", "auth_required": false, "meta": {"title": "About Academy Core"}},
-    {"path": "/programs", "layout": "programs", "auth_required": false, "meta": {"title": "Programs"}},
-    {"path": "/instructors", "layout": "instructors", "auth_required": false, "meta": {"title": "Instructors"}},
-    {"path": "/timetable", "layout": "timetable", "auth_required": false, "meta": {"title": "Timetable"}},
-    {"path": "/notices", "layout": "notices", "auth_required": false, "meta": {"title": "Notices"}},
-    {"path": "/faq", "layout": "faq", "auth_required": false, "meta": {"title": "FAQ"}},
-    {"path": "/consultation", "layout": "consultation", "auth_required": false, "meta": {"title": "Consultation"}},
-    {"path": "/contact", "layout": "contact", "auth_required": false, "meta": {"title": "Contact"}}
+    {"path": "/", "layout": "home", "auth_required": false, "meta": {"title": "$t:common.routes.home"}},
+    {"path": "/about", "layout": "about", "auth_required": false, "meta": {"title": "$t:common.routes.about"}},
+    {"path": "/programs", "layout": "programs", "auth_required": false, "meta": {"title": "$t:common.routes.programs"}},
+    {"path": "/instructors", "layout": "instructors", "auth_required": false, "meta": {"title": "$t:common.routes.instructors"}},
+    {"path": "/timetable", "layout": "timetable", "auth_required": false, "meta": {"title": "$t:common.routes.timetable"}},
+    {"path": "/notices", "layout": "notices", "auth_required": false, "meta": {"title": "$t:common.routes.notices"}},
+    {"path": "/faq", "layout": "faq", "auth_required": false, "meta": {"title": "$t:common.routes.faq"}},
+    {"path": "/consultation", "layout": "consultation", "auth_required": false, "meta": {"title": "$t:common.routes.consultation"}},
+    {"path": "/contact", "layout": "contact", "auth_required": false, "meta": {"title": "$t:common.routes.contact"}},
+    {"path": "/login", "layout": "auth/login", "auth_required": false, "guest_only": true, "meta": {"title": "$t:common.routes.login"}},
+    {"path": "/forgot-password", "layout": "auth/forgot-password", "auth_required": false, "guest_only": true, "meta": {"title": "Forgot Password"}},
+    {"path": "/reset-password", "layout": "auth/reset-password", "auth_required": false, "meta": {"title": "Reset Password"}},
+    {"path": "/register", "layout": "auth/register", "auth_required": false, "guest_only": true, "meta": {"title": "$t:common.routes.register"}},
+    {"path": "/mypage", "redirect": "/mypage/profile", "auth_required": true, "meta": {"title": "$t:common.routes.mypage"}},
+    {"path": "/mypage/profile", "layout": "mypage/profile", "auth_required": true, "meta": {"title": "$t:common.routes.profile"}},
+    {"path": "/mypage/change-password", "layout": "mypage/change-password", "auth_required": true, "meta": {"title": "$t:common.routes.change_password"}}
   ]
 }

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title2 desc2">
+  <title id="title2">Academy Core Inner Page Screenshot</title>
+  <desc id="desc2">Illustrative inner page preview for the Academy Core template.</desc>
+  <rect width="1440" height="900" fill="#f7f5ef" />
+  <rect x="0" y="0" width="1440" height="88" fill="#102542" />
+  <rect x="108" y="140" width="1224" height="92" rx="28" fill="#ffffff" />
+  <rect x="108" y="266" width="320" height="520" rx="28" fill="#ffffff" />
+  <rect x="462" y="266" width="870" height="520" rx="28" fill="#ffffff" />
+  <rect x="152" y="192" width="240" height="22" rx="11" fill="#102542" opacity="0.18" />
+  <rect x="152" y="320" width="220" height="20" rx="10" fill="#1f6f78" opacity="0.22" />
+  <rect x="152" y="366" width="180" height="16" rx="8" fill="#102542" opacity="0.12" />
+  <rect x="506" y="320" width="220" height="24" rx="12" fill="#102542" opacity="0.2" />
+  <rect x="506" y="372" width="772" height="18" rx="9" fill="#102542" opacity="0.12" />
+  <rect x="506" y="410" width="720" height="18" rx="9" fill="#102542" opacity="0.09" />
+  <rect x="506" y="468" width="356" height="180" rx="24" fill="#d7eef2" />
+  <rect x="886" y="468" width="356" height="180" rx="24" fill="#e9dbc1" />
+  <rect x="506" y="680" width="220" height="48" rx="24" fill="#1f6f78" />
+</svg>

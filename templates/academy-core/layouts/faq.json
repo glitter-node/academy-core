@@ -14,6 +14,7 @@
         "name": "Div",
         "props": {"className": "ac_page_stack"},
         "children": [
+          {"partial": "partials/faq/_intro.json"},
           {"partial": "partials/faq/_list.json"},
           {"partial": "partials/common/_cta.json"}
         ]

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "SEO page generation settings for the academy-core template",
+  "text_props": ["text", "label", "value", "title"],
+  "attr_map": {
+    "className": "class",
+    "htmlFor": "for"
+  },
+  "allowed_attrs": [
+    "class",
+    "id",
+    "href",
+    "src",
+    "alt",
+    "title",
+    "name",
+    "type",
+    "placeholder",
+    "for",
+    "target",
+    "rel",
+    "width",
+    "height",
+    "role",
+    "aria-label",
+    "aria-describedby",
+    "style"
+  ],
+  "self_closing": ["img", "input", "hr", "br"],
+  "render_modes": {
+    "html_content": {
+      "type": "raw",
+      "source": "$props_source"
+    }
+  },
+  "component_map": {
+    "Div": { "tag": "div" },
+    "Span": { "tag": "span" },
+    "P": { "tag": "p" },
+    "Button": { "tag": "button" },
+    "Img": { "tag": "img" },
+    "Input": { "tag": "input" },
+    "Form": { "tag": "form" },
+    "Label": { "tag": "label" },
+    "Select": { "tag": "select" },
+    "Option": { "tag": "option" },
+    "Textarea": { "tag": "textarea" },
+    "Table": { "tag": "table" },
+    "Thead": { "tag": "thead" },
+    "Tbody": { "tag": "tbody" },
+    "Tr": { "tag": "tr" },
+    "Th": { "tag": "th" },
+    "Td": { "tag": "td" },
+    "HtmlContent": {
+      "tag": "div",
+      "render": "html_content",
+      "props_source": "content"
+    },
+    "ThemeToggle": {
+      "tag": "div"
+    }
+  }
+}

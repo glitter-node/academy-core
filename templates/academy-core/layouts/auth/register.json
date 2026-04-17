@@ -1,0 +1,269 @@
+{
+  "version": "1.0.0",
+  "layout_name": "auth/register",
+  "extends": "auth/_auth_base",
+  "init_actions": [
+    {
+      "handler": "setState",
+      "params": {
+        "target": "local",
+        "isRegistering": false,
+        "registerError": null,
+        "errors": null,
+        "form.name": "",
+        "form.nickname": "",
+        "form.email": "",
+        "form.password": "",
+        "form.password_confirmation": "",
+        "form.language": "{{_locale ?? 'en'}}",
+        "form.agree_terms": false,
+        "form.agree_privacy": false
+      }
+    }
+  ],
+  "slots": {
+    "auth_body": [
+      {
+        "type": "basic",
+        "name": "Div",
+        "if": "{{_local.registerError}}",
+        "props": {
+          "className": "ac_form_message is_error"
+        },
+        "children": [
+          {
+            "type": "basic",
+            "name": "P",
+            "text": "{{_local.registerError}}"
+          }
+        ]
+      },
+      {
+        "type": "basic",
+        "name": "Form",
+        "dataKey": "form",
+        "props": {
+          "className": "ac_form_stack"
+        },
+        "actions": [
+          {
+            "type": "submit",
+            "handler": "sequence",
+            "actions": [
+              {
+                "handler": "setState",
+                "params": {
+                  "target": "local",
+                  "isRegistering": true,
+                  "registerError": null,
+                  "errors": null
+                }
+              },
+              {
+                "handler": "apiCall",
+                "target": "/api/auth/register",
+                "params": {
+                  "method": "POST",
+                  "body": {
+                    "name": "{{form.name}}",
+                    "nickname": "{{form.nickname}}",
+                    "email": "{{form.email}}",
+                    "password": "{{form.password}}",
+                    "password_confirmation": "{{form.password_confirmation}}",
+                    "language": "{{form.language}}",
+                    "agree_terms": "{{form.agree_terms ? 1 : 0}}",
+                    "agree_privacy": "{{form.agree_privacy ? 1 : 0}}"
+                  }
+                },
+                "onSuccess": [
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "local",
+                      "isRegistering": false
+                    }
+                  },
+                  {
+                    "handler": "toast",
+                    "params": {
+                      "type": "success",
+                      "message": "Account created successfully."
+                    }
+                  },
+                  {
+                    "handler": "navigate",
+                    "params": {
+                      "path": "/login",
+                      "query": {
+                        "registered": "1"
+                      }
+                    }
+                  }
+                ],
+                "onError": [
+                  {
+                    "handler": "setState",
+                    "params": {
+                      "target": "local",
+                      "isRegistering": false,
+                      "registerError": "{{error.errors?.email ? 'Check your email address and try again.' : error.errors?.password ? 'Check your password details and try again.' : error.errors?.agree_terms || error.errors?.agree_privacy ? 'You must accept the required agreements.' : 'Unable to create your account.'}}",
+                      "errors": "{{error.errors}}"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "children": [
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field_grid"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Name"},
+                  {"type": "basic", "name": "Input", "props": {"type": "text", "name": "name", "placeholder": "Your name", "className": "ac_input", "required": true, "disabled": "{{_local.isRegistering}}"}},
+                  {"type": "basic", "name": "P", "if": "{{_local.errors?.name}}", "props": {"className": "ac_field_error"}, "text": "Name is required."}
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Nickname"},
+                  {"type": "basic", "name": "Input", "props": {"type": "text", "name": "nickname", "placeholder": "Optional nickname", "className": "ac_input", "disabled": "{{_local.isRegistering}}"}},
+                  {"type": "basic", "name": "P", "if": "{{_local.errors?.nickname}}", "props": {"className": "ac_field_error"}, "text": "Nickname must be 50 characters or fewer."}
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field"
+            },
+            "children": [
+              {"type": "basic", "name": "Label", "text": "Email"},
+              {"type": "basic", "name": "Input", "props": {"type": "email", "name": "email", "placeholder": "you@example.com", "className": "ac_input", "required": true, "disabled": "{{_local.isRegistering}}"}},
+              {"type": "basic", "name": "P", "if": "{{_local.errors?.email}}", "props": {"className": "ac_field_error"}, "text": "Enter a valid, unused email address."}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field_grid"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Password"},
+                  {"type": "basic", "name": "Input", "props": {"type": "password", "name": "password", "placeholder": "Minimum 8 characters", "className": "ac_input", "required": true, "disabled": "{{_local.isRegistering}}"}},
+                  {"type": "basic", "name": "P", "if": "{{_local.errors?.password}}", "props": {"className": "ac_field_error"}, "text": "Password must be at least 8 characters and match the confirmation field."}
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_field"
+                },
+                "children": [
+                  {"type": "basic", "name": "Label", "text": "Confirm Password"},
+                  {"type": "basic", "name": "Input", "props": {"type": "password", "name": "password_confirmation", "placeholder": "Repeat your password", "className": "ac_input", "required": true, "disabled": "{{_local.isRegistering}}"}},
+                  {"type": "basic", "name": "P", "if": "{{_local.errors?.password_confirmation}}", "props": {"className": "ac_field_error"}, "text": "Password confirmation does not match."}
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_field"
+            },
+            "children": [
+              {"type": "basic", "name": "Label", "text": "Language"},
+              {
+                "type": "basic",
+                "name": "Select",
+                "props": {
+                  "name": "language",
+                  "className": "ac_input",
+                  "required": true,
+                  "disabled": "{{_local.isRegistering}}"
+                },
+                "children": [
+                  {"type": "basic", "name": "Option", "props": {"value": "en"}, "text": "English"},
+                  {"type": "basic", "name": "Option", "props": {"value": "ko"}, "text": "Korean"}
+                ]
+              },
+              {"type": "basic", "name": "P", "if": "{{_local.errors?.language}}", "props": {"className": "ac_field_error"}, "text": "Select a supported language."}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_checkbox_stack"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Label",
+                "props": {
+                  "className": "ac_checkbox_row"
+                },
+                "children": [
+                  {"type": "basic", "name": "Input", "props": {"type": "checkbox", "name": "agree_terms", "disabled": "{{_local.isRegistering}}"}},
+                  {"type": "basic", "name": "Span", "text": "I agree to the terms."}
+                ]
+              },
+              {"type": "basic", "name": "P", "if": "{{_local.errors?.agree_terms}}", "props": {"className": "ac_field_error"}, "text": "You must accept the terms."},
+              {
+                "type": "basic",
+                "name": "Label",
+                "props": {
+                  "className": "ac_checkbox_row"
+                },
+                "children": [
+                  {"type": "basic", "name": "Input", "props": {"type": "checkbox", "name": "agree_privacy", "disabled": "{{_local.isRegistering}}"}},
+                  {"type": "basic", "name": "Span", "text": "I agree to the privacy policy."}
+                ]
+              },
+              {"type": "basic", "name": "P", "if": "{{_local.errors?.agree_privacy}}", "props": {"className": "ac_field_error"}, "text": "You must accept the privacy policy."}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Button",
+            "props": {
+              "type": "submit",
+              "className": "{{_local.isRegistering ? 'ac_submit_button is_loading' : 'ac_submit_button'}}",
+              "disabled": "{{_local.isRegistering}}"
+            },
+            "text": "{{_local.isRegistering ? 'Creating account...' : 'Sign Up'}}"
+          }
+        ]
+      }
+    ]
+  }
+}

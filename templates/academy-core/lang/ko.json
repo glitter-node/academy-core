@@ -1,1 +1,5 @@
-{}
+{
+  "common": {
+    "$partial": "partial/ko/common.json"
+  }
+}

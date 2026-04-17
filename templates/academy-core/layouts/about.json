@@ -6,6 +6,18 @@
     "title": "About Academy Core",
     "description": "Academy vision and learning method"
   },
+  "data_sources": [
+    {
+      "id": "aboutPage",
+      "type": "api",
+      "endpoint": "/api/modules/sirsoft-page/pages/about",
+      "method": "GET",
+      "auto_fetch": true,
+      "auth_mode": "optional",
+      "refetchOnMount": true,
+      "loading_strategy": "progressive"
+    }
+  ],
   "slots": {
     "content": [
       {
@@ -14,8 +26,74 @@
         "name": "Div",
         "props": {"className": "ac_page_stack"},
         "children": [
-          {"partial": "partials/about/_intro.json"},
-          {"partial": "partials/about/_story.json"},
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{aboutPage?.data?.title && aboutPage?.data?.content}}",
+            "props": {"className": "ac_page_stack"},
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_section"},
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_section_header"},
+                    "children": [
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_label"},
+                        "text": "About"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_title"},
+                        "text": "{{aboutPage?.data?.title || 'About Academy Core'}}"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "if": "{{aboutPage?.data?.published_at}}",
+                        "props": {"className": "ac_section_copy"},
+                        "text": "Published: {{aboutPage?.data?.published_at}}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_card ac_rich_card"},
+                "children": [
+                  {
+                    "id": "about_page_content",
+                    "type": "composite",
+                    "name": "HtmlContent",
+                    "props": {
+                      "content": "{{aboutPage?.data?.content ?? ''}}",
+                      "isHtml": "{{(aboutPage?.data?.content_mode ?? 'html') === 'html'}}",
+                      "className": "ac_rich_content"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{!(aboutPage?.data?.title && aboutPage?.data?.content)}}",
+            "props": {"className": "ac_page_stack"},
+            "children": [
+              {"partial": "partials/about/_intro.json"},
+              {"partial": "partials/about/_story.json"}
+            ]
+          },
           {"partial": "partials/common/_cta.json"}
         ]
       }

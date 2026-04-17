@@ -14,8 +14,149 @@
         "name": "Div",
         "props": {"className": "ac_page_stack"},
         "children": [
-          {"partial": "partials/instructors/_intro.json"},
-          {"partial": "partials/instructors/_list.json"},
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{instructorsPage?.data?.title && instructorsPage?.data?.content}}",
+            "props": {"className": "ac_page_stack"},
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_section"},
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_section_header"},
+                    "children": [
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_label"},
+                        "text": "Instructors"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_title"},
+                        "text": "{{instructorsPage?.data?.title || 'Instructors'}}"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "if": "{{instructorsPage?.data?.published_at}}",
+                        "props": {"className": "ac_section_copy"},
+                        "text": "Published: {{instructorsPage?.data?.published_at}}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_card ac_rich_card"},
+                "children": [
+                  {
+                    "id": "instructors_page_content",
+                    "type": "composite",
+                    "name": "HtmlContent",
+                    "props": {
+                      "content": "{{instructorsPage?.data?.content ?? ''}}",
+                      "isHtml": "{{(instructorsPage?.data?.content_mode ?? 'html') === 'html'}}",
+                      "className": "ac_rich_content"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{!(instructorsPage?.data?.title && instructorsPage?.data?.content)}}",
+            "children": [
+              {"partial": "partials/instructors/_intro.json"}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{(instructorPosts?.data?.data ?? []).length > 0}}",
+            "props": {"className": "ac_grid_3"},
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "iteration": {
+                  "source": "{{instructorPosts?.data?.data ?? []}}",
+                  "item_var": "instructor"
+                },
+                "props": {"className": "ac_card"},
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Img",
+                    "if": "{{instructor?.thumbnail}}",
+                    "props": {
+                      "src": "{{instructor?.thumbnail}}",
+                      "alt": "{{instructor?.title || 'Instructor image'}}",
+                      "className": "ac_card_media_img"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_media_placeholder"},
+                    "if": "{{!instructor?.thumbnail}}",
+                    "text": "Faculty"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_badge"},
+                    "if": "{{instructor?.category}}",
+                    "text": "{{instructor?.category}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_kicker"},
+                    "if": "{{!instructor?.category}}",
+                    "text": "{{instructor?.created_at_formatted || instructor?.created_at || 'Instructor'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_title"},
+                    "text": "{{instructor?.title || 'Instructor'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_copy"},
+                    "text": "{{instructor?.content_preview || instructor?.content || 'An instructor profile is available on the public board.'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "if": "{{instructor?.category && (instructor?.created_at_formatted || instructor?.created_at)}}",
+                    "props": {"className": "ac_card_meta"},
+                    "text": "{{instructor?.created_at_formatted || instructor?.created_at}}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{(instructorPosts?.data?.data ?? []).length === 0}}",
+            "children": [
+              {"partial": "partials/instructors/_list.json"}
+            ]
+          },
           {"partial": "partials/common/_cta.json"}
         ]
       }

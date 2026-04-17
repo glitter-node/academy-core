@@ -6,6 +6,18 @@
     "title": "Contact",
     "description": "Campus and contact information"
   },
+  "data_sources": [
+    {
+      "id": "contactPage",
+      "type": "api",
+      "endpoint": "/api/modules/sirsoft-page/pages/contact",
+      "method": "GET",
+      "auto_fetch": true,
+      "auth_mode": "optional",
+      "refetchOnMount": true,
+      "loading_strategy": "progressive"
+    }
+  ],
   "slots": {
     "content": [
       {
@@ -14,6 +26,64 @@
         "name": "Div",
         "props": {"className": "ac_page_stack"},
         "children": [
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{contactPage?.data?.title && contactPage?.data?.content}}",
+            "props": {"className": "ac_page_stack"},
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_section"},
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_section_header"},
+                    "children": [
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_label"},
+                        "text": "Contact"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_title"},
+                        "text": "{{contactPage?.data?.title || 'Contact'}}"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "if": "{{contactPage?.data?.published_at}}",
+                        "props": {"className": "ac_section_copy"},
+                        "text": "Published: {{contactPage?.data?.published_at}}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_card ac_rich_card"},
+                "children": [
+                  {
+                    "id": "contact_page_content",
+                    "type": "composite",
+                    "name": "HtmlContent",
+                    "props": {
+                      "content": "{{contactPage?.data?.content ?? ''}}",
+                      "isHtml": "{{(contactPage?.data?.content_mode ?? 'html') === 'html'}}",
+                      "className": "ac_rich_content"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
           {"partial": "partials/contact/_campus.json"},
           {"partial": "partials/common/_cta.json"}
         ]

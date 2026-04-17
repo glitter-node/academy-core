@@ -32,9 +32,16 @@
           "name": "Div",
           "props": {"className": "ac_panel"},
           "children": [
-            {"type": "basic", "name": "Div", "props": {"className": "ac_panel_label"}, "text": "Campus Focus"},
-            {"type": "basic", "name": "Div", "props": {"className": "ac_panel_value"}, "text": "Spring 2026"},
-            {"type": "basic", "name": "Div", "text": "Programs, mentoring rhythm, and a consultation-first flow are aligned to make academy discovery simple for families."}
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {"className": "ac_panel_content"},
+              "children": [
+                {"type": "basic", "name": "Div", "props": {"className": "ac_panel_label"}, "text": "Campus Focus"},
+                {"type": "basic", "name": "Div", "props": {"className": "ac_panel_value"}, "text": "Spring 2026"},
+                {"type": "basic", "name": "Div", "props": {"className": "ac_copy"}, "text": "Programs, mentoring rhythm, and a consultation-first flow are aligned to make academy discovery simple for families."}
+              ]
+            }
           ]
         }
       ]

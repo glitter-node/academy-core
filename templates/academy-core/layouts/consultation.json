@@ -4,18 +4,119 @@
   "extends": "_user_base",
   "meta": {
     "title": "Consultation",
-    "description": "Consultation request form"
+    "description": "Consultation booking"
   },
+  "init_actions": [
+    {
+      "handler": "setState",
+      "params": {
+        "target": "local",
+        "verificationForm": {
+          "email": ""
+        },
+        "verificationStatus": {
+          "verified": false,
+          "email": null,
+          "expires_at": null
+        },
+        "verificationError": null,
+        "verificationSuccess": null,
+        "services": {
+          "data": []
+        },
+        "servicesError": null,
+        "isLoadingServices": true,
+        "selectedServiceId": "",
+        "bookingForm": {
+          "service_id": "",
+          "booking_date": "",
+          "booking_time": "",
+          "customer_name": "",
+          "customer_phone": "",
+          "memo": ""
+        },
+        "slots": [],
+        "hasSearchedSlots": false,
+        "slotError": null,
+        "slotMessage": null,
+        "bookingErrors": null,
+        "bookingError": null,
+        "bookingSuccess": null,
+        "isSendingVerification": false,
+        "isLoadingSlots": false,
+        "isSubmittingBooking": false
+      }
+    },
+    {
+      "handler": "apiCall",
+      "target": "/sanctum/csrf-cookie",
+      "params": {
+        "method": "GET"
+      }
+    },
+    {
+      "handler": "apiCall",
+      "target": "/modules/glitter-reservation/reservation/verification-status",
+      "params": {
+        "method": "GET"
+      },
+      "onSuccess": [
+        {
+          "handler": "setState",
+          "params": {
+            "target": "local",
+            "verificationStatus": "{{response.data ?? { verified: false, email: null, expires_at: null }}}",
+            "verificationForm": {
+              "email": "{{response.data?.email ?? ''}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "handler": "apiCall",
+      "target": "/modules/glitter-reservation/reservation/services",
+      "params": {
+        "method": "GET"
+      },
+      "onSuccess": [
+        {
+          "handler": "setState",
+          "params": {
+            "target": "local",
+            "services": "{{response.data?.data ? response.data : { data: response.data ?? [] }}}",
+            "isLoadingServices": false
+          }
+        }
+      ],
+      "onError": [
+        {
+          "handler": "setState",
+          "params": {
+            "target": "local",
+            "servicesError": "Consultation services are not available right now.",
+            "isLoadingServices": false
+          }
+        }
+      ]
+    }
+  ],
   "slots": {
     "content": [
       {
         "id": "consultation_stack",
         "type": "basic",
         "name": "Div",
-        "props": {"className": "ac_page_stack"},
+        "props": {
+          "className": "ac_page_stack"
+        },
         "children": [
-          {"partial": "partials/consultation/_intro.json"},
-          {"partial": "partials/consultation/_form.json"}
+          {
+            "partial": "partials/consultation/_intro.json"
+          },
+          {
+            "partial": "partials/consultation/_form.json"
+          }
         ]
       }
     ]

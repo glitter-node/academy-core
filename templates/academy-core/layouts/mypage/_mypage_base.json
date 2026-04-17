@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "layout_name": "mypage/_mypage_base",
+  "extends": "_user_base",
+  "data_sources": [
+    {
+      "id": "current_user",
+      "type": "api",
+      "endpoint": "/api/auth/user",
+      "method": "GET",
+      "auto_fetch": true,
+      "auth_mode": "required",
+      "loading_strategy": "progressive",
+      "initGlobal": "currentUser",
+      "fallback": {
+        "data": []
+      },
+      "errorHandling": {
+        "401": {
+          "handler": "suppress"
+        }
+      }
+    }
+  ],
+  "slots": {
+    "content": [
+      {
+        "type": "basic",
+        "name": "Div",
+        "props": {
+          "className": "ac_account_page"
+        },
+        "children": [
+          {
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "ac_account_shell"
+            },
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "ac_account_header"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "P",
+                    "props": {
+                      "className": "ac_auth_eyebrow"
+                    },
+                    "text": "{{route.path === '/mypage/change-password' ? 'Security' : 'My Page'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {
+                      "className": "ac_auth_title"
+                    },
+                    "text": "{{route.path === '/mypage/change-password' ? 'Change Password' : 'Account'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "P",
+                    "props": {
+                      "className": "ac_auth_intro"
+                    },
+                    "text": "{{route.path === '/mypage/change-password' ? 'Update your password using the existing account security API.' : 'Review and update your member profile using the existing account API.'}}"
+                  }
+                ]
+              },
+              {
+                "partial": "partials/mypage/_account_nav.json"
+              },
+              {
+                "id": "ac_mypage_body_slot",
+                "type": "basic",
+                "name": "Div",
+                "slot": "mypage_body",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

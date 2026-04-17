@@ -29,7 +29,7 @@
           "props": {
             "className": "ac_section_title"
           },
-          "text": "Collect the first student profile in a focused academy intake layout."
+          "text": "Plan a real consultation booking with the academy team."
         },
         {
           "type": "basic",
@@ -37,7 +37,7 @@
           "props": {
             "className": "ac_section_copy"
           },
-          "text": "The form remains static in this version so the template stays safe to render without custom backend endpoints or database work."
+          "text": "Choose a consultation service, check available time slots, and submit a verified booking request. If public reservation data is not ready, this page stays visible with a safe fallback message."
         }
       ]
     }

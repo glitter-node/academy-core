@@ -14,8 +14,149 @@
         "name": "Div",
         "props": {"className": "ac_page_stack"},
         "children": [
-          {"partial": "partials/programs/_intro.json"},
-          {"partial": "partials/programs/_list.json"},
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{programsPage?.data?.title && programsPage?.data?.content}}",
+            "props": {"className": "ac_page_stack"},
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_section"},
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_section_header"},
+                    "children": [
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_label"},
+                        "text": "Programs"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "props": {"className": "ac_section_title"},
+                        "text": "{{programsPage?.data?.title || 'Programs'}}"
+                      },
+                      {
+                        "type": "basic",
+                        "name": "Div",
+                        "if": "{{programsPage?.data?.published_at}}",
+                        "props": {"className": "ac_section_copy"},
+                        "text": "Published: {{programsPage?.data?.published_at}}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "name": "Div",
+                "props": {"className": "ac_card ac_rich_card"},
+                "children": [
+                  {
+                    "id": "programs_page_content",
+                    "type": "composite",
+                    "name": "HtmlContent",
+                    "props": {
+                      "content": "{{programsPage?.data?.content ?? ''}}",
+                      "isHtml": "{{(programsPage?.data?.content_mode ?? 'html') === 'html'}}",
+                      "className": "ac_rich_content"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{!(programsPage?.data?.title && programsPage?.data?.content)}}",
+            "children": [
+              {"partial": "partials/programs/_intro.json"}
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{(programPosts?.data?.data ?? []).length > 0}}",
+            "props": {"className": "ac_grid_3"},
+            "children": [
+              {
+                "type": "basic",
+                "name": "Div",
+                "iteration": {
+                  "source": "{{programPosts?.data?.data ?? []}}",
+                  "item_var": "program"
+                },
+                "props": {"className": "ac_card"},
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Img",
+                    "if": "{{program?.thumbnail}}",
+                    "props": {
+                      "src": "{{program?.thumbnail}}",
+                      "alt": "{{program?.title || 'Program image'}}",
+                      "className": "ac_card_media_img"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_media_placeholder"},
+                    "if": "{{!program?.thumbnail}}",
+                    "text": "Program"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_badge"},
+                    "if": "{{program?.category}}",
+                    "text": "{{program?.category}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_kicker"},
+                    "if": "{{!program?.category}}",
+                    "text": "{{program?.created_at_formatted || program?.created_at || 'Program'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_title"},
+                    "text": "{{program?.title || 'Program'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "props": {"className": "ac_card_copy"},
+                    "text": "{{program?.content_preview || program?.content || 'A program summary is available on the public board.'}}"
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Div",
+                    "if": "{{program?.category && (program?.created_at_formatted || program?.created_at)}}",
+                    "props": {"className": "ac_card_meta"},
+                    "text": "{{program?.created_at_formatted || program?.created_at}}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "basic",
+            "name": "Div",
+            "if": "{{(programPosts?.data?.data ?? []).length === 0}}",
+            "children": [
+              {"partial": "partials/programs/_list.json"}
+            ]
+          },
           {"partial": "partials/common/_cta.json"}
         ]
       }

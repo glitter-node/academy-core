@@ -1,37 +1,920 @@
 {
-  "meta": {"is_partial": true},
+  "meta": {
+    "is_partial": true
+  },
   "type": "basic",
   "name": "Div",
-  "props": {"className": "ac_header"},
+  "props": {
+    "className": "ac_header"
+  },
   "children": [
     {
       "type": "basic",
       "name": "Div",
-      "props": {"className": "ac_wrap ac_header_inner"},
+      "props": {
+        "className": "ac_wrap ac_header_inner"
+      },
       "children": [
         {
           "type": "basic",
           "name": "Div",
-          "props": {"className": "ac_brand"},
+          "props": {
+            "className": "ac_brand_row"
+          },
           "children": [
-            {"type": "basic", "name": "Div", "props": {"className": "ac_brand_mark"}, "text": "Academy Core"},
-            {"type": "basic", "name": "Div", "props": {"className": "ac_brand_name"}, "text": "Future Learning Campus"}
+            {
+              "type": "basic",
+              "name": "Img",
+              "if": "{{_global.settings?.general?.site_logo_url}}",
+              "props": {
+                "src": "{{_global.settings?.general?.site_logo_url}}",
+                "alt": "{{_global.settings?.general?.site_name || 'Academy Core'}}",
+                "className": "ac_brand_logo"
+              }
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_brand"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_brand_mark"
+                  },
+                  "text": "{{_global.settings?.general?.site_description || 'Academy focused education website'}}"
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_brand_name"
+                  },
+                  "text": "{{_global.settings?.general?.site_name || 'Future Learning Campus'}}"
+                }
+              ]
+            }
           ]
         },
         {
           "type": "basic",
           "name": "Div",
-          "props": {"className": "ac_nav"},
+          "props": {
+            "className": "ac_desktop_nav"
+          },
           "children": [
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Home", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "About", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/about"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Programs", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/programs"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Instructors", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/instructors"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Timetable", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/timetable"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "FAQ", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/faq"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Notices", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/notices"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_nav_button"}, "text": "Contact", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/contact"}}]},
-            {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_button"}, "text": "Consultation", "actions": [{"type": "click", "handler": "navigate", "params": {"path": "/consultation"}}]}
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_nav_dropdown"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "{{_local.headerDesktopMenu === 'main' ? 'ac_nav_primary is_open' : 'ac_nav_primary'}}"
+                  },
+                  "text": "Main",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "headerDesktopMenu": "{{_local.headerDesktopMenu === 'main' ? '' : 'main'}}",
+                        "headerMenuOpen": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "if": "{{_local.headerDesktopMenu === 'main'}}",
+                  "props": {
+                    "className": "ac_nav_dropdown_panel"
+                  },
+                  "children": [
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Home",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "About",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/about"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_nav_dropdown"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "{{_local.headerDesktopMenu === 'academy' ? 'ac_nav_primary is_open' : 'ac_nav_primary'}}"
+                  },
+                  "text": "Academy",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "headerDesktopMenu": "{{_local.headerDesktopMenu === 'academy' ? '' : 'academy'}}",
+                        "headerMenuOpen": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "if": "{{_local.headerDesktopMenu === 'academy'}}",
+                  "props": {
+                    "className": "ac_nav_dropdown_panel"
+                  },
+                  "children": [
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Programs",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/programs"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Instructors",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/instructors"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Timetable",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/timetable"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_nav_dropdown"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "{{_local.headerDesktopMenu === 'support' ? 'ac_nav_primary is_open' : 'ac_nav_primary'}}"
+                  },
+                  "text": "Support",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "headerDesktopMenu": "{{_local.headerDesktopMenu === 'support' ? '' : 'support'}}",
+                        "headerMenuOpen": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "if": "{{_local.headerDesktopMenu === 'support'}}",
+                  "props": {
+                    "className": "ac_nav_dropdown_panel"
+                  },
+                  "children": [
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "FAQ",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/faq"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Notices",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/notices"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Contact",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/contact"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_nav_dropdown"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Button",
+                  "props": {
+                    "type": "button",
+                    "className": "{{_local.headerDesktopMenu === 'account' ? 'ac_nav_primary ac_nav_primary_account is_open' : 'ac_nav_primary ac_nav_primary_account'}}"
+                  },
+                  "text": "{{_global.currentUser?.login_id ?? _global.currentUser?.username ?? _global.currentUser?.nickname ?? _global.currentUser?.name ?? _global.currentUser?.email ?? 'Account'}}",
+                  "actions": [
+                    {
+                      "type": "click",
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "headerDesktopMenu": "{{_local.headerDesktopMenu === 'account' ? '' : 'account'}}",
+                        "headerMenuOpen": false
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "if": "{{_local.headerDesktopMenu === 'account'}}",
+                  "props": {
+                    "className": "ac_nav_dropdown_panel ac_nav_dropdown_panel_account"
+                  },
+                  "children": [
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Login",
+                      "if": "{{!(_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email)}}",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/login"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Sign Up",
+                      "if": "{{!(_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email)}}",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/register"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Account",
+                      "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/mypage/profile"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link"
+                      },
+                      "text": "Change Password",
+                      "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "navigate",
+                              "params": {
+                                "path": "/mypage/change-password"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_nav_dropdown_link ac_nav_dropdown_link_logout"
+                      },
+                      "text": "Logout",
+                      "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}",
+                      "actions": [
+                        {
+                          "type": "click",
+                          "handler": "sequence",
+                          "actions": [
+                            {
+                              "handler": "setState",
+                              "params": {
+                                "target": "local",
+                                "headerDesktopMenu": ""
+                              }
+                            },
+                            {
+                              "handler": "logout",
+                              "onSuccess": [
+                                {
+                                  "handler": "setState",
+                                  "params": {
+                                    "target": "global",
+                                    "currentUser": null
+                                  }
+                                },
+                                {
+                                  "handler": "toast",
+                                  "params": {
+                                    "type": "success",
+                                    "message": "Signed out successfully."
+                                  }
+                                },
+                                {
+                                  "handler": "navigate",
+                                  "params": {
+                                    "path": "/"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Button",
+              "props": {
+                "type": "button",
+                "className": "{{route.path === '/consultation' ? 'ac_header_cta is-active' : 'ac_header_cta'}}"
+              },
+              "text": "Consultation",
+              "actions": [
+                {
+                  "type": "click",
+                  "handler": "sequence",
+                  "actions": [
+                    {
+                      "handler": "setState",
+                      "params": {
+                        "target": "local",
+                        "headerDesktopMenu": "",
+                        "headerMenuOpen": false
+                      }
+                    },
+                    {
+                      "handler": "navigate",
+                      "params": {
+                        "path": "/consultation"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+            ,
+            {
+              "type": "composite",
+              "name": "ThemeToggle",
+              "props": {
+                "className": "ac_header_theme",
+                "autoText": "System",
+                "lightText": "Light",
+                "darkText": "Dark"
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_mobile_toggle_wrap"
+          },
+          "children": [
+            {
+              "type": "basic",
+              "name": "Button",
+              "props": {
+                "type": "button",
+                "className": "ac_mobile_menu_button"
+              },
+              "text": "{{_local.headerMenuOpen ?? false ? 'Close' : 'Menu'}}",
+              "actions": [
+                {
+                  "type": "click",
+                  "handler": "setState",
+                  "params": {
+                    "target": "local",
+                    "headerMenuOpen": "{{!(_local.headerMenuOpen ?? false)}}",
+                    "headerDesktopMenu": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "basic",
+      "name": "Div",
+      "if": "{{_local.headerMenuOpen ?? false}}",
+      "props": {
+        "className": "ac_wrap ac_mobile_menu_panel"
+      },
+      "children": [
+        {
+          "type": "basic",
+          "name": "Div",
+          "props": {
+            "className": "ac_mobile_menu_surface"
+          },
+          "children": [
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_mobile_menu_section ac_mobile_theme_section"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_heading"
+                  },
+                  "text": "Appearance"
+                },
+                {
+                  "type": "composite",
+                  "name": "ThemeToggle",
+                  "props": {
+                    "className": "ac_mobile_theme",
+                    "autoText": "System",
+                    "lightText": "Light",
+                    "darkText": "Dark"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_mobile_menu_section"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_heading"
+                  },
+                  "text": "Main"
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_group"
+                  },
+                  "children": [
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_mobile_menu_link"
+                      },
+                      "text": "Home",
+                      "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/"}}]}]
+                    },
+                    {
+                      "type": "basic",
+                      "name": "Button",
+                      "props": {
+                        "type": "button",
+                        "className": "ac_mobile_menu_link"
+                      },
+                      "text": "About",
+                      "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/about"}}]}]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_mobile_menu_section"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_heading"
+                  },
+                  "text": "Academy"
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_group"
+                  },
+                  "children": [
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Programs", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/programs"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Instructors", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/instructors"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Timetable", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/timetable"}}]}]}
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_mobile_menu_section"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_heading"
+                  },
+                  "text": "Support"
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_group"
+                  },
+                  "children": [
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "FAQ", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/faq"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Notices", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/notices"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Contact", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/contact"}}]}]}
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_mobile_menu_section"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_heading"
+                  },
+                  "text": "{{_global.currentUser?.login_id ?? _global.currentUser?.username ?? _global.currentUser?.nickname ?? _global.currentUser?.name ?? _global.currentUser?.email ?? 'Account'}}"
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_group"
+                  },
+                  "children": [
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Login", "if": "{{!(_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email)}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/login"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Sign Up", "if": "{{!(_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email)}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/register"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Account", "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/mypage/profile"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Change Password", "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/mypage/change-password"}}]}]},
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Logout", "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "logout", "onSuccess": [{"handler": "setState", "params": {"target": "global", "currentUser": null}}, {"handler": "toast", "params": {"type": "success", "message": "Signed out successfully."}}, {"handler": "navigate", "params": {"path": "/"}}]}]}]}
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "basic",
+              "name": "Div",
+              "props": {
+                "className": "ac_mobile_menu_section"
+              },
+              "children": [
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_heading"
+                  },
+                  "text": "CTA"
+                },
+                {
+                  "type": "basic",
+                  "name": "Div",
+                  "props": {
+                    "className": "ac_mobile_menu_group"
+                  },
+                  "children": [
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "{{route.path === '/consultation' ? 'ac_mobile_menu_link ac_mobile_menu_link_cta is-active' : 'ac_mobile_menu_link ac_mobile_menu_link_cta'}}"}, "text": "Consultation", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/consultation"}}]}]}
+                  ]
+                }
+              ]
+            }
           ]
         }
       ]
