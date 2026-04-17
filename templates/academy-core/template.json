@@ -1,6 +1,6 @@
 {
   "identifier": "academy-core",
-  "vendor": "academy",
+  "vendor": "Glitter.kr",
   "name": {
     "ko": "Academy Core",
     "en": "Academy Core"
@@ -35,21 +35,30 @@
   },
   "components": {
     "basic": [
-      "button", "div", "form", "img", "input", "label", "option",
-      "p", "select", "span", "table", "tbody", "td", "textarea",
-      "th", "thead", "tr"
+      "button",
+      "div",
+      "form",
+      "img",
+      "input",
+      "label",
+      "option",
+      "p",
+      "select",
+      "span",
+      "table",
+      "tbody",
+      "td",
+      "textarea",
+      "th",
+      "thead",
+      "tr"
     ],
-    "composite": [
-      "html-content", "theme-toggle"
-    ],
+    "composite": ["html-content", "theme-toggle"],
     "layout": []
   },
   "preview": {
     "thumbnail": "preview/thumbnail.svg",
-    "screenshots": [
-      "preview/screenshot1.svg",
-      "preview/screenshot2.svg"
-    ]
+    "screenshots": ["preview/screenshot1.svg", "preview/screenshot2.svg"]
   },
   "error_config": {
     "layouts": {
