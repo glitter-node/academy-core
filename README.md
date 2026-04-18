@@ -154,6 +154,34 @@ git push
 
 ---
 
+## Verification & Reproducibility
+
+This project is not just a template, but a reproducible project baseline.
+
+The following verification criteria are provided:
+
+### 1. Installation Reproducibility
+- Same result guaranteed with identical steps
+- No manual hidden configuration required
+- Environment dependencies clearly defined
+
+### 2. Runtime Validation
+- Auth flow fully tested in browser
+- Page rendering verified after template activation
+- API contract integration confirmed
+
+### 3. Structural Integrity
+- No core modification required
+- Extension points used for all custom logic
+- Module / Template separation maintained
+
+### 4. Operational Boundary Definition
+- Scope of responsibility clearly defined
+- External dependencies explicitly separated
+- Non-included components documented
+
+---
+
 ## License
 
 Follow the license and distribution policy of the parent GnuBoard7 project.
