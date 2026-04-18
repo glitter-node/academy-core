@@ -136,15 +136,6 @@ Verified:
 
 ---
 
-## Release
-
-cd <project-root>  
-git add -A  
-git commit -m "release: academy-core open beta"  
-git push  
-
----
-
 ## Maintenance
 
 - Keep UI text in English
