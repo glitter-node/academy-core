@@ -603,31 +603,7 @@
                                 "headerDesktopMenu": ""
                               }
                             },
-                            {
-                              "handler": "logout",
-                              "onSuccess": [
-                                {
-                                  "handler": "setState",
-                                  "params": {
-                                    "target": "global",
-                                    "currentUser": null
-                                  }
-                                },
-                                {
-                                  "handler": "toast",
-                                  "params": {
-                                    "type": "success",
-                                    "message": "Signed out successfully."
-                                  }
-                                },
-                                {
-                                  "handler": "navigate",
-                                  "params": {
-                                    "path": "/"
-                                  }
-                                }
-                              ]
-                            }
+                            {"handler": "logout"}
                           ]
                         }
                       ]
@@ -883,7 +859,7 @@
                     {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Sign Up", "if": "{{!(_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email)}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/register"}}]}]},
                     {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Account", "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/mypage/profile"}}]}]},
                     {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Change Password", "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "navigate", "params": {"path": "/mypage/change-password"}}]}]},
-                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Logout", "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "logout", "onSuccess": [{"handler": "setState", "params": {"target": "global", "currentUser": null}}, {"handler": "toast", "params": {"type": "success", "message": "Signed out successfully."}}, {"handler": "navigate", "params": {"path": "/"}}]}]}]}
+                    {"type": "basic", "name": "Button", "props": {"type": "button", "className": "ac_mobile_menu_link"}, "text": "Logout", "if": "{{_global.currentUser?.uuid || _global.currentUser?.id || _global.currentUser?.email}}", "actions": [{"type": "click", "handler": "sequence", "actions": [{"handler": "setState", "params": {"target": "local", "headerMenuOpen": false, "headerDesktopMenu": ""}}, {"handler": "logout"}]}]}
                   ]
                 }
               ]

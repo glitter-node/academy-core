@@ -23,7 +23,8 @@
   "dependencies": {
     "modules": {
       "sirsoft-board": ">=0.1.1",
-      "sirsoft-page": ">=0.1.1"
+      "sirsoft-page": ">=0.1.1",
+      "glitter-reservation": ">=0.1.0"
     },
     "plugins": {}
   },
