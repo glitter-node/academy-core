@@ -182,6 +182,56 @@ The following verification criteria are provided:
 
 ---
 
+## Verification Procedure
+
+To validate this project as a reproducible baseline, follow the steps below:
+
+### 1. Clean Environment Setup
+
+- Prepare a fresh GnuBoard7 installation
+- Ensure no existing templates are active
+
+### 2. Install Template
+
+- Place academy-core under templates/
+- Run build process
+- Apply template using artisan command
+
+### 3. Functional Verification
+
+Verify the following flows in browser:
+
+- Register → Login → Logout
+- Forgot Password → Email → Reset → Login
+- Navigate all public pages
+- Access mypage routes
+
+### 4. API Contract Check
+
+Confirm backend responds correctly:
+
+- POST /api/auth/login → 200 / 422
+- POST /api/auth/register → 200 / 422
+- POST /api/auth/forgot-password → 200
+- POST /api/auth/reset-password → 200
+
+### 5. Rebuild Consistency Check
+
+- Delete dist/
+- Run npm run build again
+- Re-apply template
+- Confirm identical behavior
+
+### 6. Failure Boundary Check
+
+Confirm the following are NOT handled by this template:
+
+- Backend auth failure
+- Mail delivery issues
+- Core CMS errors
+
+---
+
 ## License
 
 Follow the license and distribution policy of the parent GnuBoard7 project.
